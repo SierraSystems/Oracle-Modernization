@@ -2,7 +2,7 @@
 
 ## Hibernate with Maven
 
-Configure Oracle Maven repository on your project following these [instructions]([Oracle Maven repository](https://docs.oracle.com/middleware/1213/core/MAVEN/config_maven_repo.htm#MAVEN9010)
+Configure Oracle Maven repository on your project following these [Oracle Maven repository instructions](https://docs.oracle.com/middleware/1213/core/MAVEN/config_maven_repo.htm#MAVEN9010)
 
 Copy [resources\hibernate.properties.template](src\backend\justinpoc\src\main\resources\hibernate.properties.template) to `hibernate.properties`
 
