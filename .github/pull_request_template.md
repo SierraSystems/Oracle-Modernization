@@ -2,11 +2,7 @@
 
 This PR includes the following proposed change(s):
 
-- {List all the changes, if possible add the jira ticket #}
-
-## Screenshots
-
-Please add any relevant UI screenshots of your component(s) or changes to existing component(s).
+- {List all the changes}
 
 ## Type of change
 
