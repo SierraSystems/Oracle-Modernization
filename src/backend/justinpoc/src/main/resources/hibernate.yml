@@ -1,6 +1,0 @@
-hibernate:
-  connection:
-    driver_class: oracle.jdbc.driver.OracleDriver
-    url: ${DATABASE_URL:jdbc:oracle:thin:@<server>:<port>:<instance>}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}

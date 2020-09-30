@@ -71,7 +71,7 @@
 							<username>sa</username>
 							<password></password>
 							<autocommit>true</autocommit>
-							<sqlCommand>create table foo (id int not null primary key, baz varchar(256))</sqlCommand>
+							<sqlCommand>drop table foo; create table foo (id int not null primary key, baz varchar(256))</sqlCommand>
 						</configuration>
 					</execution>
 				</executions>
@@ -92,6 +92,9 @@
 						<version>${h2.version}</version>
 					</dependency>
 				</dependencies>
+				<configuration>
+					<propertyFile>src/main/resources/hibernate.properties</propertyFile>
+				</configuration>
 				<executions>
 					<execution>
 						<id>entity-generation</id>
