@@ -19,6 +19,7 @@
 		<h2.version>1.4.199</h2.version>
 		<sql.version>1.5</sql.version>
 		<hibernate.version>6.0.0.Alpha2</hibernate.version>
+		<oracle.version>12.2.0.1</oracle.version>
 	</properties>
 
 	<dependencies>
@@ -26,6 +27,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>19.7.0.0</version>
+			<scope>test</scope>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -48,36 +58,6 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sql-maven-plugin</artifactId>
-				<version>${sql.version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>com.h2database</groupId>
-						<artifactId>h2</artifactId>
-						<version>${h2.version}</version>
-					</dependency>
-				</dependencies>
-				<executions>
-					<execution>
-						<id>create-database</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<driver>org.h2.Driver</driver>
-							<url>jdbc:h2:${project.build.directory}/database/bardb</url>
-							<username>sa</username>
-							<password></password>
-							<autocommit>true</autocommit>
-							<sqlCommand>DROP TABLE IF EXISTS foo CASCADE</sqlCommand>
-							<sqlCommand>create table foo (id int not null primary key, baz varchar(256))</sqlCommand>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.hibernate.tool</groupId>
 				<artifactId>hibernate-tools-maven</artifactId>
 				<version>${hibernate.version}</version>
@@ -87,11 +67,13 @@
 						<artifactId>hibernate-tools-orm</artifactId>
 						<version>${hibernate.version}</version>
 					</dependency>
+
 					<dependency>
-						<groupId>com.h2database</groupId>
-						<artifactId>h2</artifactId>
-						<version>${h2.version}</version>
+						<groupId>com.oracle.database.jdbc</groupId>
+						<artifactId>ojdbc8</artifactId>
+						<version>19.7.0.0</version>
 					</dependency>
+
 				</dependencies>
 				<configuration>
 					<propertyFile>src/main/resources/hibernate.properties</propertyFile>
