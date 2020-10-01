@@ -1,6 +1,5 @@
-package com.nttdata.justinpoc.api;
+package com.nttdata.justinpoc.agency;
 
-import com.nttdata.justinpoc.api.model.Agency;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
