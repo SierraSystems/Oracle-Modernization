@@ -21,7 +21,9 @@
     "electron": "^6.0.12",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "@bcgov/bootstrap-theme": "github:bcgov/bootstrap-theme",
+    "shared-components": "https://github.com/bcgov/react-shared-components/releases/download/0.5.9/shared-components-0.5.9.tgz"
   },
   "scripts": {
     "electron": "cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"",
