@@ -33,11 +33,23 @@ components:
       required:
         - id
         - name
+        - address
+        - phoneNumber
+        - email
+        - contactPerson
       properties:
         id:
           type: string
           format: uuid
         name:
+          type: string
+        address:
+          type: string
+        phoneNumber:
+          type: string
+        email:
+          type: string
+        contactPerson:
           type: string
     Agencies:
       type: array
