@@ -11,17 +11,16 @@ import java.util.UUID;
 public class AgencyDelagateImpl implements com.nttdata.justinpoc.api.AgencyApiDelegate {
 
     @Override
-    public ResponseEntity<List<Agency>> listAgency() {
+    public ResponseEntity<List<com.nttdata.justinpoc.api.model.Agency>> listAgency() {
 
-        List<Agency> result = new ArrayList<>();
+        List<com.nttdata.justinpoc.api.model.Agency> result = new ArrayList<>();
 
-
-        Agency agency1 = new Agency();
+        com.nttdata.justinpoc.api.model.Agency agency1 = new com.nttdata.justinpoc.api.model.Agency();
         agency1.setId(UUID.randomUUID());
         agency1.setName("agency1");
         result.add(agency1);
 
-        Agency agency2 = new Agency();
+        com.nttdata.justinpoc.api.model.Agency agency2 = new com.nttdata.justinpoc.api.model.Agency();
         agency2.setId(UUID.randomUUID());
         agency2.setName("agency2");
         result.add(agency2);
