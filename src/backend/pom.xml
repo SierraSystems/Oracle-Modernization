@@ -22,8 +22,8 @@
 		<profile>
 			<id>all</id>
 			<modules>
-				<module>justinpoc</module>
-				<module>agencyapi</module>
+				<module>libs/justin-data-starter</module>
+				<module>justin-agency-api</module>
 			</modules>
 		</profile>
 	</profiles>
