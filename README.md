@@ -37,3 +37,5 @@ prerequisit
 
 - java jdk 8
 - visual c++ [install](https://www.microsoft.com/en-us/download/details.aspx?id=40784)
+
+follow this [instructions](https://oracle-base.com/articles/12c/standalone-forms-builder-12c-installation-on-windows-1221)
