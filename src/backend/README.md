@@ -10,7 +10,7 @@ Set your hibernate configuration, you can use this as a template:
 
 ```properties
 hibernate.dialect=org.hibernate.dialect.OracleDialect
-hibernate.default_schema=JEDI
+hibernate.default_schema=OT
 hibernate.connection.driver_class=oracle.jdbc.driver.OracleDriver
 hibernate.connection.url=jdbc:oracle:thin:@<server>:<port>:<instance>
 hibernate.connection.username=[username]
