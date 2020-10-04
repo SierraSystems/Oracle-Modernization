@@ -39,3 +39,24 @@ prerequisit
 - visual c++ [install](https://www.microsoft.com/en-us/download/details.aspx?id=40784)
 
 follow this [instructions](https://oracle-base.com/articles/12c/standalone-forms-builder-12c-installation-on-windows-1221)
+
+open `<your installation dir>\Middleware\forms_builder\forms\templates\registry\formsbuilder.reg` and look for the following entry
+
+```
+[HKEY_LOCAL_MACHINE\%ORACLE_HOME_REG_KEY%]
+"FORMS_BUILDER_CLASSPATH"="%ORACLE_HOME%\\..."
+```
+
+create a new entry in the windows registry under `HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\KEY_OracleHome1`
+
+**Value name**: FORMS_BUILDER_CLASSPATH
+**Value data**: The value from the formsbuilder.reg, for me it was: `%ORACLE_HOME%\\jlib\\frmbld.jar;%ORACLE_HOME%\\jlib\\importer.jar;%ORACLE_HOME%\\jlib\\debugger.jar;%ORACLE_HOME%\\jlib\\utj.jar;%ORACLE_HOME%\\oracle_common\\jlib\\ewt3.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.bali.share\\share.jar;%ORACLE_HOME%\\jlib\\dfc.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\ohj.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\help-share.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\oracle_ice.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.bali.jewt\\jewt4.jar;%ORACLE_HOME%\\forms\\java\\frmwebutil.jar;%ORACLE_HOME%\\forms\\java\\frmall.jar;%ORACLE_HOME%\\forms\\java\\frmwebsocketjsi.jar`
+
+then execute `<your installation dir>\Middleware\Oracle_Home\bin\frmbld.exe`
+
+to connect to the database go to file > Connect... and enter the database credentials:
+
+![Connect To Oracle](docs/forms-connect.PNG)
+
+> Do not specifiy the PORT in the connection string, this cost me 4 hours of work
+
