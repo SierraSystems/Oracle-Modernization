@@ -30,3 +30,10 @@ hibernate.connection.url=jdbc:oracle:thin:@<yourip>:1521:cdb1
 hibernate.connection.username=ot
 hibernate.connection.password=<yourpassword>
 ```
+
+## Install Oracle form builder
+
+prerequisit
+
+- java jdk 8
+- visual c++ [install](https://www.microsoft.com/en-us/download/details.aspx?id=40784)
