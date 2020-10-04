@@ -60,5 +60,5 @@ to connect to the database go to file > Connect... and enter the database creden
 
 > Do not specifiy the PORT in the connection string, this cost me 4 hours of work
 
-install [jdeveloper-12c](https://www.oracle.com/tools/downloads/jdeveloper-12c-downloads.html)
+install [jdeveloper-12c](https://www.oracle.com/tools/downloads/jdev-v12120-downloads.html) choose the 32bit version as they are mixed up ;-)
 
