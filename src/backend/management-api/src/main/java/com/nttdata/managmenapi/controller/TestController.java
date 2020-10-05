@@ -19,6 +19,7 @@ public class TestController {
         contact.setEmail("bobross@paintit.com");
         contact.setFirstName("Bob");
         contact.setLastName("Ross");
+        contact.setPhoneNumber("123-456-7890");
 
         Contact contact2 = new Contact();
         contact2.setContactId(BigDecimal.valueOf(2));
@@ -26,6 +27,7 @@ public class TestController {
         contact2.setEmail("hanSolo@paintit.com");
         contact2.setFirstName("Han");
         contact2.setLastName("Solo");
+        contact2.setPhoneNumber("987-654-3210");
 
         return ResponseEntity.ok(Arrays.asList(contact, contact2));
     }
@@ -38,6 +40,7 @@ public class TestController {
         contact.setEmail("bobross@paintit.com");
         contact.setFirstName("Bob");
         contact.setLastName("Ross");
+        contact.setPhoneNumber("123-456-7890");
         return ResponseEntity.ok(contact);
     }
 

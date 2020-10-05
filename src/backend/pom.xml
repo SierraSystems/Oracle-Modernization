@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.nttdata</groupId>
-	<artifactId>justin-poc-backend</artifactId>
+	<artifactId>oracle-modernization-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<description>Justin Backend</description>
+	<description>Oracle Modernization API Backend for performing CRUD operations on an Oracle Database</description>
 
-	<name>justin-poc-backend</name>
+	<name>oracle-modernization-backend</name>
 	<packaging>pom</packaging>
 	<url>https://github.com/SierraSystems/Justin-POC</url>
 

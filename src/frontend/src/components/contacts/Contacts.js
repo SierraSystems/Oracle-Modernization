@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { MdModeEdit, MdDeleteForever } from 'react-icons/md';
 import { Button } from 'shared-components';
 import EditContact from '../edit-contact/EditContact';
@@ -9,6 +10,15 @@ const deleteContact = (contact) => {
 };
 
 const getContacts = (setContacts) => {
+  axios
+    .get("/management/contacts")
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log("Getting contacts failed: ", err);
+    });
+
   const contact1 = {
     id: 1,
     firstName: "Bob",
