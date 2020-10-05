@@ -13,24 +13,11 @@ const getContacts = (setContacts) => {
   axios
     .get("/management/contacts")
     .then((res) => {
-      console.log(res);
+      setContacts(res.data);
     })
     .catch((err) => {
       console.log("Getting contacts failed: ", err);
     });
-
-  const contact1 = {
-    id: 1,
-    firstName: "Bob",
-    lastName: "Ross",
-    email: "myemail@example.com",
-    phoneNumber: "123-456-7890",
-    customerId: "1"
-  };
-  const contact2 = { ...contact1, id: 2, customerId: "2", firstName: "Magical", lastName: "Man" };
-  const contacts = [contact1, contact2];
-
-  setContacts(contacts);
 };
 
 export default function Contacts() {
@@ -65,7 +52,7 @@ export default function Contacts() {
         <tbody>
           {contacts.map(contact => (
             <tr>
-              <td>{contact.id}</td>
+              <td>{contact.contactId}</td>
               <td>{contact.firstName}</td>
               <td>{contact.lastName}</td>
               <td>{contact.email}</td>
