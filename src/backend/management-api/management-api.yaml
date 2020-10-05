@@ -1,12 +1,15 @@
 openapi: 3.0.0
 info:
-  version: 0.3.0
+  version: 0.0.1
   title: management-api
   description: Management api
 servers:
   - url: "http://localhost:8080"
+tags:
+  - name: contact
+    description: Enpoints for contact data
 paths:
-  "/managment/contact":
+  "/management/contact":
     post:
       summary: Update
       operationId: Update Contact
@@ -19,12 +22,12 @@ paths:
               $ref: "#/components/schemas/Contact"
       responses:
         "200":
-          description: File successfully received
+          description: Contact was updated
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-  "/managment/contact/{contactId}":
+  "/management/contact/{contactId}":
     get:
       summary: get a contact by id
       operationId: GetContact
@@ -45,7 +48,7 @@ paths:
                 $ref: "#/components/schemas/Contact"
         "404":
           description: contact not found
-  "/managment/contacts":
+  "/management/contacts":
     get:
       summary: get all contacts
       operationId: GetContacts
@@ -53,7 +56,7 @@ paths:
         - contact
       responses:
         "200":
-          description: File successfully received
+          description: get all contacts
           content:
             application/json:
               schema:

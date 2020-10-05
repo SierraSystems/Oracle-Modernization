@@ -1,6 +1,6 @@
 package com.nttdata.managmenapi;
 
-import com.nttdata.managementapi.api.ManagmentApiDelegate;
+import com.nttdata.managementapi.api.ManagementApiDelegate;
 import com.nttdata.managementapi.api.model.Contact;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ManagementApiDelegateImpl implements ManagmentApiDelegate {
+public class ManagementApiDelegateImpl implements ManagementApiDelegate {
     @Override
     public ResponseEntity<Contact> getContact(BigDecimal contactId) {
         Contact contact = new Contact();
@@ -32,8 +32,8 @@ public class ManagementApiDelegateImpl implements ManagmentApiDelegate {
         contact.setLastName("Ross");
 
         Contact contact2 = new Contact();
-        contact.setContactId(BigDecimal.ONE);
-        contact.setCustomerId(BigDecimal.ONE);
+        contact.setContactId(BigDecimal.valueOf(2));
+        contact.setCustomerId(BigDecimal.valueOf(2));
         contact.setEmail("hanSolo@paintit.com");
         contact.setFirstName("Han");
         contact.setLastName("Solo");
