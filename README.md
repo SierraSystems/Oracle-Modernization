@@ -1,4 +1,4 @@
-# Oracle Modernization Proof-of-Concept
+# Oracle Modernization
 
 Oracle Modernization is a proof-of-concept to allow users to perform CRUD operations on an Oracle Database.
 
