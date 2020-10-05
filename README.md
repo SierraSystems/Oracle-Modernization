@@ -49,7 +49,7 @@ Create a new entry in the windows registry under `HKEY_LOCAL_MACHINE\SOFTWARE\Or
 
 **Value name**: FORMS_BUILDER_CLASSPATH
 
-**Value data**: The value from the formsbuilder.reg, for me it was: `%ORACLE_HOME%\\jlib\\frmbld.jar;%ORACLE_HOME%\\jlib\\importer.jar;%ORACLE_HOME%\\jlib\\debugger.jar;%ORACLE_HOME%\\jlib\\utj.jar;%ORACLE_HOME%\\oracle_common\\jlib\\ewt3.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.bali.share\\share.jar;%ORACLE_HOME%\\jlib\\dfc.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\ohj.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\help-share.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\oracle_ice.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.bali.jewt\\jewt4.jar;%ORACLE_HOME%\\forms\\java\\frmwebutil.jar;%ORACLE_HOME%\\forms\\java\\frmall.jar;%ORACLE_HOME%\\forms\\java\\frmwebsocketjsi.jar`
+**Value data**: The value from the formsbuilder.reg: `%ORACLE_HOME%\\jlib\\frmbld.jar;%ORACLE_HOME%\\jlib\\importer.jar;%ORACLE_HOME%\\jlib\\debugger.jar;%ORACLE_HOME%\\jlib\\utj.jar;%ORACLE_HOME%\\oracle_common\\jlib\\ewt3.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.bali.share\\share.jar;%ORACLE_HOME%\\jlib\\dfc.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\ohj.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\help-share.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.help\\oracle_ice.jar;%ORACLE_HOME%\\oracle_common\\modules\\oracle.bali.jewt\\jewt4.jar;%ORACLE_HOME%\\forms\\java\\frmwebutil.jar;%ORACLE_HOME%\\forms\\java\\frmall.jar;%ORACLE_HOME%\\forms\\java\\frmwebsocketjsi.jar`
 
 Then execute `<your installation dir>\Middleware\Oracle_Home\bin\frmbld.exe`
 
