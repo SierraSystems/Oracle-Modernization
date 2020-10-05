@@ -1,32 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Header, Footer } from 'shared-components';
-import Agencies from './components/Agencies';
-
-const getAgencies = (setAgencies) => {
-  const agency1 = {
-    id: 1,
-    name: "My Agency",
-    address: "123 Best Street",
-    phoneNumber: "123-456-7890",
-    email: "myemail@example.com",
-    contactPerson: "Dan Wolfe"
-  };
-  const agency2 = { ...agency1, id: 2, contactPerson: "Phillip Price" };
-  const agencies = [agency1, agency2];
-
-  setAgencies(agencies);
-};
+import Contacts from './components/contacts/Contacts';
 
 function App() {
-  const [agencies, setAgencies] = useState([]);
-
-  useEffect(() => {
-    getAgencies(setAgencies);
-  }, []);
-
   const header = {
-    name: "Justin POC",
+    name: "Oracle Modernization",
     history: useHistory(),
   };
 
@@ -35,9 +14,13 @@ function App() {
       <Header header={header} />
       <div className="page">
         <div className="content col-md-12">
-          <h1>Justin POC</h1>
+          <h1>Oracle Modernization</h1>
+          <p>
+            Welcome to Oracle Modernization. This proof-of-concept application will allow users
+            to interact and perform CRUD operations on entities residing within an Oracle Database.
+          </p>
           <br />
-          <Agencies agencies={agencies} />
+          <Contacts />
         </div>
       </div>
       <Footer className="footer" />
