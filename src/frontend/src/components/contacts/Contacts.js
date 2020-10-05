@@ -3,11 +3,9 @@ import axios from 'axios';
 import { MdModeEdit, MdDeleteForever } from 'react-icons/md';
 import { Button } from 'shared-components';
 import EditContact from '../edit-contact/EditContact';
+import AddContact from '../add-contact/AddContact';
 import './Contacts.css';
-
-const deleteContact = (contact) => {
-
-};
+import SimpleModal from '../simple-modal/SimpleModal';
 
 const getContacts = (setContacts) => {
   axios
@@ -20,21 +18,41 @@ const getContacts = (setContacts) => {
     });
 };
 
+const deleteContact = (contactToDelete) => {
+  console.log("Contact to delete is", contactToDelete);
+};
+
 export default function Contacts() {
   const [contacts, setContacts] = useState([]);
   const [contactToEdit, setContactToEdit] = useState(null);
+  const [contactToDelete, setContactToDelete] = useState(null);
+  const [addContact, setAddContact] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     getContacts(setContacts);
   }, []);
 
   if (contactToEdit) return <EditContact contact={contactToEdit} />
+  if (addContact) return <AddContact />
+
+  const confirmButton = {
+    label: "Delete contact",
+    styling: "normal-blue btn consistent-width",
+    onClick: () => deleteContact(contactToDelete)
+  };
+  
+  const cancelButton = {
+    label: "No thank you",
+    styling: "normal-white btn consistent-width",
+    onClick: () => setShowModal(false)
+  };
 
   return (
     <>
       <div className="heading-spacing">
         <h2>Contacts</h2>
-        <Button label="Add Contact" styling="normal-blue btn" />
+        <Button label="Add New Contact" styling="normal-blue btn" onClick={() => setAddContact(true)} />
       </div>
       <br />
       <table className="table table-striped table-hover table-bordered table-sm">
@@ -61,13 +79,32 @@ export default function Contacts() {
               <td>
                 <div className="icon-spacing">
                   <MdModeEdit className="pointer" size={32} onClick={() => setContactToEdit(contact)} />
-                  <MdDeleteForever className="pointer" size={32} onClick={() => deleteContact(contact)} />
+                  <MdDeleteForever
+                    className="pointer"
+                    size={32}
+                    onClick={() => {
+                      setContactToDelete(contact);
+                      setShowModal(true);
+                    }}
+                  />
                 </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {showModal && (
+        <SimpleModal
+          title="Delete Contact"
+          body={() => (
+            <>
+              <p className="text-center">Are you sure you want to delete this contact?</p>
+            </>
+          )}
+          cancelButton={cancelButton}
+          confirmButton={confirmButton}
+        />
+      )}
     </>
   );
 }

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'shared-components';
 import Contacts from '../contacts/Contacts';
-import './EditContact.css';
 
 const input = {
   isReadOnly: false,
-  isRequired: false
+  isRequired: true
 };
 
-const generateInput = (id, label, value, setEditedContact, editedContact) => {
+const generateInput = (id, label, setAddedContact, addedContact) => {
   return (
     <div className="half-width">
       <Input
@@ -16,12 +15,11 @@ const generateInput = (id, label, value, setEditedContact, editedContact) => {
           ...input,
           id,
           label,
-          styling: "editable-white",
-          value
+          styling: "editable-white"
         }}
         onChange={(val) => {
-          setEditedContact({
-            ...editedContact,
+          setAddedContact({
+            ...addedContact,
             [id]: val,
           });
         }}
@@ -31,26 +29,24 @@ const generateInput = (id, label, value, setEditedContact, editedContact) => {
   );
 };
 
-export default function EditContact({ contact }) {
-  const [editedContact, setEditedContact] = useState(contact);
+export default function AddContact({ contact }) {
+  const [addedContact, setAddedContact] = useState({});
   const [showContacts, setShowContacts] = useState(false);
-
-  const { firstName, lastName, email, phoneNumber } = contact;
 
   if (showContacts) return <Contacts />
 
   return (
     <div>
-      <h2>Edit Contact</h2>
+      <h2>Add New Contact</h2>
       <br />
-      {generateInput("firstName", "First Name", firstName, setEditedContact, editedContact)}
-      {generateInput("lastName", "Last Name", lastName, setEditedContact, editedContact)}
-      {generateInput("email", "Email", email, setEditedContact, editedContact)}
-      {generateInput("phoneNumber", "Phone Number", phoneNumber, setEditedContact, editedContact)}
+      {generateInput("firstName", "First Name", setAddedContact, addedContact)}
+      {generateInput("lastName", "Last Name", setAddedContact, addedContact)}
+      {generateInput("email", "Email", setAddedContact, addedContact)}
+      {generateInput("phoneNumber", "Phone Number", setAddedContact, addedContact)}
       <br />
       <section className="buttons pt-2">
         <Button
-          label="Edit Contact"
+          label="Add New Contact"
           styling="normal-blue btn space-right"
         />
         <Button
