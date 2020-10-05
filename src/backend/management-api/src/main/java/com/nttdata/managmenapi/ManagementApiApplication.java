@@ -1,13 +1,13 @@
-package com.nttdata.agencyapi;
+package com.nttdata.managmenapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AgencyapiApplication {
+public class ManagementApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AgencyapiApplication.class, args);
+		SpringApplication.run(ManagementApiApplication.class, args);
 	}
 
 }

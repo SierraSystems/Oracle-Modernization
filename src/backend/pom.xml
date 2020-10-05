@@ -23,7 +23,7 @@
 			<id>all</id>
 			<modules>
 				<module>libs/justin-data-starter</module>
-				<module>justin-agency-api</module>
+				<module>management-api</module>
 			</modules>
 		</profile>
 	</profiles>

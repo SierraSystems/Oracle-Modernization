@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  version: 0.3.0
+  title: management-api
+  description: Management api
+servers:
+  - url: "http://localhost:8080"
+paths:
+  "/managment/contact":
+    post:
+      summary: Update
+      operationId: Update Contact
+      tags:
+        - contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        "200":
+          description: File successfully received
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+  "/managment/contact/{contactId}":
+    get:
+      summary: get a contact by id
+      operationId: GetContact
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema:
+            type: number
+      tags:
+        - contact
+      responses:
+        "200":
+          description: contact found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        "404":
+          description: contact not found
+  "/managment/contacts":
+    get:
+      summary: get all contacts
+      operationId: GetContacts
+      tags:
+        - contact
+      responses:
+        "200":
+          description: File successfully received
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contacts"
+components:
+  schemas:
+    Contact:
+      type: object
+      description: Contact
+      properties:
+        contactId:
+          type: number
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        customerId:
+          type: number
+    Contacts:
+      type: array
+      description: Contacts
+      items:
+        $ref: "#/components/schemas/Contact"

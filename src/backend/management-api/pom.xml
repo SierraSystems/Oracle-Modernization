@@ -5,24 +5,24 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.3.RELEASE</version>
+		<version>2.3.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.nttdata</groupId>
-	<artifactId>justin-agency-api</artifactId>
+	<artifactId>management-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>justin-agency-api</name>
+	<name>management-api</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
-		<default-package>com.nttdata.agencyapi</default-package>
+		<default-package>com.nttdata.managementapi</default-package>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
 		<dependency>
@@ -38,9 +38,18 @@
 		</dependency>
 
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.10.6</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<dependency>
@@ -48,7 +57,6 @@
 			<artifactId>validation-api</artifactId>
 			<version>2.0.1.Final</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>commons-codec</groupId>
@@ -69,6 +77,35 @@
 		</dependency>
 
 		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.10.6</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-access</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>net.rakugakibox.spring.boot</groupId>
+			<artifactId>logback-access-spring-boot-starter</artifactId>
+			<version>2.7.1</version>
+		</dependency>
+
+		<!-- Swagger -->
+		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
 			<version>1.6.2</version>
@@ -76,25 +113,12 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.4.7</version>
+			<version>1.4.6</version>
 		</dependency>
-
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.9.2</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-webmvc -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-spring-webmvc</artifactId>
-			<version>2.10.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-spring-integration-webmvc</artifactId>
-			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -102,24 +126,12 @@
 			<version>2.9.2</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.openapitools</groupId>
 			<artifactId>jackson-databind-nullable</artifactId>
 			<version>0.2.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>5.2.9.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.nttdata</groupId>
-			<artifactId>justin-data-starter</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -128,10 +140,22 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.nttdata.agencyapi.AgencyapiApplication</mainClass>
+					<mainClass>com.nttdata.ManagementApiApplication</mainClass>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+
+			<!--openapi server autogen-->
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
@@ -143,7 +167,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/agency.yml</inputSpec>
+							<inputSpec>${project.basedir}/management-api.yaml</inputSpec>
 							<generatorName>spring</generatorName>
 							<configOptions>
 								<dateLibrary>joda</dateLibrary>
@@ -157,7 +181,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 
 		</plugins>
 	</build>
