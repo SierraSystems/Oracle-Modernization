@@ -1,11 +1,10 @@
 openapi: "3.0.0"
 info:
-  version: 1.0.0
-  title: Swagger Petstore
-  license:
-    name: MIT
+  version: 0.3.0
+  title: justin-agency-api
+  description: Justin Agency api
 servers:
-  - url: http://petstore.swagger.io/v1
+  - url: "http://localhost:8080"
 paths:
   /agency:
     get:

@@ -1,5 +1,5 @@
 hibernate.dialect=org.hibernate.dialect.OracleDialect
-hibernate.default_schema=JEDI
+hibernate.default_schema=OT
 hibernate.connection.driver_class=oracle.jdbc.driver.OracleDriver
 hibernate.connection.url=${DATABASE_URL:jdbc:oracle:thin:@<server>:<port>:<instance>}
 hibernate.connection.username=${DATABASE_USERNAME}

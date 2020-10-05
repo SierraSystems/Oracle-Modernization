@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.nttdata</groupId>
-	<artifactId>justinpoc</artifactId>
+	<artifactId>justin-data-starter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>justinpoc</name>
+	<name>justin-data-starter</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -93,80 +93,10 @@
 			<version>2.0.1.Final</version>
 		</dependency>
 
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-annotations</artifactId>
-			<version>1.6.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-spring-web</artifactId>
-			<version>2.6.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.openapitools</groupId>
-			<artifactId>jackson-databind-nullable</artifactId>
-			<version>0.2.1</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
 		<plugins>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<mainClass>com.nttdata.justinpoc.JustinpocApplication</mainClass>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.openapitools</groupId>
-				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>4.3.1</version>
-				<executions>
-					<execution>
-						<id>spring-boot-api</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<inputSpec>${project.basedir}/agency.yml</inputSpec>
-							<generatorName>spring</generatorName>
-							<configOptions>
-								<dateLibrary>joda</dateLibrary>
-								<delegatePattern>true</delegatePattern>
-							</configOptions>
-							<library>spring-boot</library>
-							<apiPackage>${default-package}.api</apiPackage>
-							<modelPackage>${default-package}.api.model</modelPackage>
-							<invokerPackage>${default-package}.api.handler</invokerPackage>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
 			<plugin>
 				<groupId>org.hibernate.tool</groupId>
 				<artifactId>hibernate-tools-maven</artifactId>
