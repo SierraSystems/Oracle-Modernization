@@ -44,8 +44,13 @@ public class TestController {
         return ResponseEntity.ok(contact);
     }
 
-    @PostMapping(value = "/management/contact")
+    @PostMapping(value = "/management/contact/update")
     public ResponseEntity<Contact> updateContact(@RequestBody Contact contact) {
-        return ResponseEntity.ok(new Contact());
+        return ResponseEntity.ok(contact);
+    }
+
+    @PutMapping(value = "management/contact/add")
+    public ResponseEntity<Contact> addContact(@RequestBody Contact contact) {
+        return ResponseEntity.ok(contact);
     }
 }
