@@ -21,11 +21,11 @@ public class TestController {
         contact.setLastName("Ross");
 
         Contact contact2 = new Contact();
-        contact.setContactId(BigDecimal.valueOf(2));
-        contact.setCustomerId(BigDecimal.valueOf(2));
-        contact.setEmail("hanSolo@paintit.com");
-        contact.setFirstName("Han");
-        contact.setLastName("Solo");
+        contact2.setContactId(BigDecimal.valueOf(2));
+        contact2.setCustomerId(BigDecimal.valueOf(2));
+        contact2.setEmail("hanSolo@paintit.com");
+        contact2.setFirstName("Han");
+        contact2.setLastName("Solo");
 
         return ResponseEntity.ok(Arrays.asList(contact, contact2));
     }

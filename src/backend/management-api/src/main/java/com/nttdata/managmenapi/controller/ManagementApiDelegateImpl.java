@@ -1,4 +1,4 @@
-package com.nttdata.managmenapi;
+package com.nttdata.managmenapi.controller;
 
 import com.nttdata.managementapi.api.ManagementApiDelegate;
 import com.nttdata.managementapi.api.model.Contact;
