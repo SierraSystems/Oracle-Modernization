@@ -10,8 +10,8 @@ code {
 }
 
 main {
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
   min-height: 100vh;
   position: relative;
 }
@@ -28,4 +28,10 @@ main {
   flex-direction: column;
   padding-top: 30px;
   padding-bottom: 30px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
