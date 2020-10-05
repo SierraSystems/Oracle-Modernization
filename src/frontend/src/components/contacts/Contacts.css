@@ -3,6 +3,11 @@
   justify-content: space-around;
 }
 
+.heading-spacing {
+  display: flex;
+  justify-content: space-between;
+}
+
 .pointer {
   cursor: pointer;
 }
