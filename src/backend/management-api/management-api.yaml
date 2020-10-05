@@ -72,7 +72,7 @@ components:
           type: string
         email:
           type: string
-        phone:
+        phoneNumber:
           type: string
         customerId:
           type: number

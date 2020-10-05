@@ -19,7 +19,7 @@ public class ManagementApiDelegateImpl implements ManagmentApiDelegate {
         contact.setEmail("bobross@paintit.com");
         contact.setFirstName("Bob");
         contact.setLastName("Ross");
-        contact.setPhone("123-456-7890");
+        contact.setPhoneNumber("123-456-7890");
         return ResponseEntity.ok(contact);
     }
 
@@ -31,7 +31,7 @@ public class ManagementApiDelegateImpl implements ManagmentApiDelegate {
         contact.setEmail("bobross@paintit.com");
         contact.setFirstName("Bob");
         contact.setLastName("Ross");
-        contact.setPhone("123-456-7890");
+        contact.setPhoneNumber("123-456-7890");
 
         Contact contact2 = new Contact();
         contact.setContactId(BigDecimal.valueOf(2));
@@ -39,7 +39,7 @@ public class ManagementApiDelegateImpl implements ManagmentApiDelegate {
         contact.setEmail("hanSolo@paintit.com");
         contact.setFirstName("Han");
         contact.setLastName("Solo");
-        contact.setPhone("987-654-3210");
+        contact.setPhoneNumber("987-654-3210");
 
         return ResponseEntity.ok(Arrays.asList(contact, contact2));
     }
