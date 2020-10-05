@@ -69,7 +69,7 @@ export default function Contacts() {
         </thead>
         <tbody>
           {contacts.map(contact => (
-            <tr>
+            <tr key={contact.contactId}>
               <td>{contact.contactId}</td>
               <td>{contact.firstName}</td>
               <td>{contact.lastName}</td>
