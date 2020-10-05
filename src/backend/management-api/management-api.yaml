@@ -6,7 +6,7 @@ info:
 servers:
   - url: "http://localhost:8080"
 paths:
-  "/managment/contact":
+  "/management/contact":
     post:
       summary: Update
       operationId: Update Contact
@@ -24,7 +24,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-  "/managment/contact/{contactId}":
+  "/management/contact/{contactId}":
     get:
       summary: get a contact by id
       operationId: GetContact
@@ -45,7 +45,7 @@ paths:
                 $ref: "#/components/schemas/Contact"
         "404":
           description: contact not found
-  "/managment/contacts":
+  "/management/contacts":
     get:
       summary: get all contacts
       operationId: GetContacts
