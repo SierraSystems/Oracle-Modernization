@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Header } from 'shared-components';
+import { Header, Footer } from 'shared-components';
 import Agencies from './components/Agencies';
 
 const getAgencies = (setAgencies) => {
@@ -40,6 +40,7 @@ function App() {
           <Agencies agencies={agencies} />
         </div>
       </div>
+      <Footer className="footer" />
     </main>
   );
 }
