@@ -1,7 +1,8 @@
-package com.nttdata.managmenapi.controller;
+package com.nttdata.managementapi.controller;
 
 import com.nttdata.managementapi.api.ManagementApiDelegate;
 import com.nttdata.managementapi.api.model.Contact;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +46,12 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
     }
 
     @Override
-    public ResponseEntity<Contact> updateContact(Contact contact) {
+    public ResponseEntity<Contact> addContact(Contact contact) {
         return ResponseEntity.ok(new Contact());
+    }
+
+    @Override
+    public ResponseEntity<Contact> updateContact(Contact contact) {
+        return new ResponseEntity(contact, HttpStatus.CREATED);
     }
 }
