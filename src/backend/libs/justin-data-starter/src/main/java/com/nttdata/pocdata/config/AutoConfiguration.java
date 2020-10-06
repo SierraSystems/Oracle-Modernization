@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 public class AutoConfiguration {
 
-    @Bean
+    //@Bean
     public ContactsService contactsService(ContactsDao contactsDao) {
         return new ContactsServiceImpl(contactsDao);
     }
