@@ -102,7 +102,9 @@ export default function Contacts() {
           title="Delete Contact"
           body={() => (
             <>
-              <p className="text-center">Are you sure you want to delete this contact?</p>
+              <p className="text-center">
+                {`Are you sure you want to delete ${contactToDelete.firstName} ${contactToDelete.lastName}?`}
+              </p>
             </>
           )}
           cancelButton={cancelButton}
