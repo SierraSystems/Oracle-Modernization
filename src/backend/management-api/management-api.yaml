@@ -1,13 +1,13 @@
 openapi: 3.0.0
 info:
   version: 0.0.1
-  title: management-api
-  description: Management api
+  title: Oracle Modernization Management API
+  description: Management API
 servers:
   - url: "http://localhost:8080"
 tags:
   - name: contact
-    description: Enpoints for contact data
+    description: Endpoints for contact data
 paths:
   "/management/contact/update":
     put:
