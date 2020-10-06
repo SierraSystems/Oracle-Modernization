@@ -47,11 +47,11 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
 
     @Override
     public ResponseEntity<Contact> addContact(Contact contact) {
-        return ResponseEntity.ok(new Contact());
+        return new ResponseEntity(contact, HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<Contact> updateContact(Contact contact) {
-        return new ResponseEntity(contact, HttpStatus.CREATED);
+        return ResponseEntity.ok(new Contact());
     }
 }
