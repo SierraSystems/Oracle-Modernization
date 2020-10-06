@@ -52,7 +52,7 @@ export default function Contacts() {
   return (
     <>
       <div className="heading-spacing">
-        <h2>Contacts</h2>
+        <h2 className="v-centerify">Contacts</h2>
         <Button label="Add New Contact" styling="normal-blue btn" onClick={() => setAddContact(true)} />
       </div>
       <br />
