@@ -4,6 +4,7 @@ import com.nttdata.data.Contacts;
 import com.nttdata.managementapi.api.ManagementApiDelegate;
 import com.nttdata.managementapi.api.model.Contact;
 import com.nttdata.pocdata.ContactsService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +19,6 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
 
     public ManagementApiDelegateImpl(ContactsService contactService) {
         this.contactService = contactService;
-    }
-
-    @Override
-    public ResponseEntity<Contact> addContact(Contact contact) {
-        return ResponseEntity.ok(contact);
     }
 
     @Override
@@ -47,8 +43,13 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
     }
 
     @Override
+    public ResponseEntity<Contact> addContact(Contact contact) {
+        return new ResponseEntity(contact, HttpStatus.CREATED);
+    }
+
+    @Override
     public ResponseEntity<Contact> updateContact(Contact contact) {
-        return ResponseEntity.ok(new Contact());
+        return ResponseEntity.ok(contact);
     }
 
     private Contact mapContact(Contacts contacts) {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { MdModeEdit, MdDeleteForever } from 'react-icons/md';
 import { Button } from 'shared-components';
 import EditContact from '../edit-contact/EditContact';
+import Feedback from '../feedback/Feedback';
 import AddContact from '../add-contact/AddContact';
 import './Contacts.css';
 import SimpleModal from '../simple-modal/SimpleModal';
@@ -51,7 +52,7 @@ export default function Contacts() {
   return (
     <>
       <div className="heading-spacing">
-        <h2>Contacts</h2>
+        <h2 className="v-centerify">Contacts</h2>
         <Button label="Add New Contact" styling="normal-blue btn" onClick={() => setAddContact(true)} />
       </div>
       <br />
@@ -93,12 +94,17 @@ export default function Contacts() {
           ))}
         </tbody>
       </table>
+      <br />
+      <br />
+      <Feedback />
       {showModal && (
         <SimpleModal
           title="Delete Contact"
           body={() => (
             <>
-              <p className="text-center">Are you sure you want to delete this contact?</p>
+              <p className="text-center">
+                {`Are you sure you want to delete ${contactToDelete.firstName} ${contactToDelete.lastName}?`}
+              </p>
             </>
           )}
           cancelButton={cancelButton}
