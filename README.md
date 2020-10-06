@@ -1,6 +1,6 @@
 # Oracle Modernization
 
-Oracle Modernization is a proof-of-concept to allow users to perform CRUD operations on an Oracle Database.
+Oracle Modernization is a proof-of-concept to migrate legacy Oracle Forms to modern software architecture.
 
 ## Install Oracle on Azure
 
