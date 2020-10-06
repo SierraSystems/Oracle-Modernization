@@ -3,6 +3,7 @@ import axios from 'axios';
 import { MdModeEdit, MdDeleteForever } from 'react-icons/md';
 import { Button } from 'shared-components';
 import EditContact from '../edit-contact/EditContact';
+import Feedback from '../feedback/Feedback';
 import AddContact from '../add-contact/AddContact';
 import './Contacts.css';
 import SimpleModal from '../simple-modal/SimpleModal';
@@ -93,6 +94,9 @@ export default function Contacts() {
           ))}
         </tbody>
       </table>
+      <br />
+      <br />
+      <Feedback />
       {showModal && (
         <SimpleModal
           title="Delete Contact"
