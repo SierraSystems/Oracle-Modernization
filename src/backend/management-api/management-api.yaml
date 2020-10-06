@@ -10,7 +10,7 @@ tags:
     description: Enpoints for contact data
 paths:
   "/management/contact/update":
-    post:
+    put:
       summary: Update
       operationId: Update Contact
       tags:
@@ -28,7 +28,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Contact"
   "/management/contact/add":
-    put:
+    post:
       summary: Add
       operationId: Add Contact
       tags:
@@ -39,7 +39,7 @@ paths:
             schema:
               $ref: "#/components/schemas/Contact"
       responses:
-        "200":
+        "201":
           description: Contact was added
           content:
             application/json:
