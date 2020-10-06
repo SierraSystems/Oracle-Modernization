@@ -1,7 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Header, Footer } from 'shared-components';
+import { Header, Footer, Button } from 'shared-components';
 import Contacts from './components/contacts/Contacts';
+
+const openLink = (link) => {
+  window.open(link);
+};
 
 function App() {
   const header = {
@@ -21,6 +25,24 @@ function App() {
           </p>
           <br />
           <Contacts />
+          <br />
+          <br />
+          <h3>Have questions or suggestions about the Oracle Modernization Application?</h3>
+          <div className="box">
+            <p>Submit and view feedback for:</p>
+            <div className="flexed">
+              <Button
+                label="Documentation"
+                styling="normal-white btn space-right"
+                onClick={() => openLink("https://github.com/SierraSystems/Oracle-Modernization")}
+              />
+              <Button
+                label="The Product"
+                styling="normal-white btn"
+                onClick={() => openLink("https://github.com/SierraSystems/Oracle-Modernization/issues/new/choose")}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <Footer className="footer" />

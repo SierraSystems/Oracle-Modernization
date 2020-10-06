@@ -44,3 +44,14 @@ main {
   width: -moz-available;
   width: stretch;
 }
+
+.box {
+  padding: 25px;
+  margin: 16px 0;
+  background-color: #f2f2f2;
+  width: 50%;
+}
+
+.flexed {
+  display: flex;
+}
