@@ -2,12 +2,8 @@ package com.nttdata.pocdata;
 
 import com.nttdata.data.Contacts;
 
-public class ContactsService {
+import java.util.List;
 
-    public String getContacts() {
-        Contacts contacts = new Contacts();
-
-        return "WAT";
-    }
-
+public interface ContactsService {
+    List<Contacts> getContacts();
 }
