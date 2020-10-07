@@ -25,7 +25,7 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
     @Override
     public ResponseEntity<Contact> getContact(BigDecimal contactId) {
 
-        Optional<Contacts> contacts = contactService.getContact(contactId);
+        Optional<Contacts> contacts = contactService.getContact(contactId.toBigInteger());
 
         return contacts.map(value -> ResponseEntity.ok(mapContact(value))).orElseGet(() -> new ResponseEntity("Client not found", HttpStatus.NOT_FOUND));
 
@@ -59,7 +59,7 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
     @Override
     public ResponseEntity<Void> deleteContact(BigDecimal contactId) {
 
-        contactService.deleteContact(contactId);
+        contactService.deleteContact(contactId.toBigInteger());
         return null;
 
     }
@@ -69,7 +69,7 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
         Contacts contacts = new Contacts();
         contacts.setLastName(contact.getLastName());
         contacts.setFirstName(contact.getFirstName());
-        contacts.setContactId(contact.getContactId().toBigInteger());
+        contacts.setContactId((contact.getContactId() != null) ? contact.getContactId().toBigInteger() : null);
         contacts.setEmail(contact.getEmail());
         contacts.setPhone(contact.getPhoneNumber());
         return contacts;
