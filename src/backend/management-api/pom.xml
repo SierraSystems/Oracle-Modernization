@@ -167,15 +167,21 @@
         <version>1.8.0</version>
         <configuration>
           <schemaVersion>V2</schemaVersion>
-          <resourceGroup>management-api-1602088921959-rg</resourceGroup>
-          <appName>management-api-1602088921959</appName>
+          <resourceGroup>oracle2</resourceGroup>
+          <appName>management-api-014236578654</appName>
           <pricingTier>P1v2</pricingTier>
-          <region>westeurope</region>
+          <region>westus</region>
           <runtime>
             <os>linux</os>
             <javaVersion>jre8</javaVersion>
             <webContainer>jre8</webContainer>
           </runtime>
+          <appSettings>
+            <property>
+                  <name>JAVA_OPTS</name>
+                  <value>-Dserver.port=80</value>
+            </property>
+          </appSettings>
           <deployment>
             <resources>
               <resource>
