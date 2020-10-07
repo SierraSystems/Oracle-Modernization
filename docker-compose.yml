@@ -9,7 +9,7 @@ services:
     volumes:
       # declare your mount volume /host/dir:/container/dir
       - metabase:/metabase-data
-      - /src/metabase/plugins:/app/plugins
+      - ./src/metabase/plugins:/app/plugins
     environment:
         MB_PLUGINS_DIR: /app/plugins
     #   MB_DB_TYPE: postgres
