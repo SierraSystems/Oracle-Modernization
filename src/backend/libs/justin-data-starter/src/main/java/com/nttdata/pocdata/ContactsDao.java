@@ -4,7 +4,8 @@ import com.nttdata.pocdata.hibernate.Contacts;
 
 import org.springframework.data.repository.CrudRepository;
 
+import javax.transaction.Transactional;
+import java.math.BigInteger;
 
-import java.math.BigDecimal;
-
-public interface ContactsDao extends CrudRepository<Contacts, BigDecimal> { }
+@Transactional
+public interface ContactsDao extends CrudRepository<Contacts, BigInteger> { }
