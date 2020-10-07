@@ -14,7 +14,7 @@ Connect to the database using sql developer and create the [oracle-sample-databa
 Fix the form builder here:
 https://devio.wordpress.com/2010/09/22/forms_builder_classpath-not-set-after-installation-of-oracle-forms-builder-11-1-1-2-0/
 
-## Configure Justin Data Starter
+## Configure Data Starter
 
 Copy `src\backend\libs\justin-data-starter\src\main\resources\hibernate.properties.template` to `src\backend\libs\justin-data-starter\src\main\resources\hibernate.properties`
 
@@ -30,6 +30,8 @@ hibernate.connection.password=<yourpassword>
 ```
 
 ## Install Oracle Form Builder
+
+Follow  this: [https://simpleoracle.com/tag/forms-reports-12c/](https://simpleoracle.com/tag/forms-reports-12c/)
 
 Prerequisites:
 
