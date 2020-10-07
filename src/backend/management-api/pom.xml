@@ -122,7 +122,7 @@
         <groupId>org.springframework.boot</groupId>  
         <artifactId>spring-boot-maven-plugin</artifactId>  
         <configuration> 
-          <mainClass>com.nttdata.ManagementApiApplication</mainClass> 
+          <mainClass>com.nttdata.managementapi.ManagementApiApplication</mainClass> 
         </configuration> 
       </plugin>  
       <plugin> 
