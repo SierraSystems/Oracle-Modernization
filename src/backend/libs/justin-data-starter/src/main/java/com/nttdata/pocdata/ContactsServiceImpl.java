@@ -4,6 +4,7 @@ import com.nttdata.pocdata.hibernate.Contacts;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class ContactsServiceImpl implements ContactsService {
     }
 
     @Override
-    public Optional<Contacts> getContact(BigDecimal contactId) {
+    public Optional<Contacts> getContact(BigInteger contactId) {
         return contactsDao.findById(contactId);
     }
 
@@ -35,7 +36,7 @@ public class ContactsServiceImpl implements ContactsService {
     }
 
     @Override
-    public void deleteContact(BigDecimal contactId) {
-
+    public void deleteContact(BigInteger contactId) {
+        contactsDao.deleteById(contactId);
     }
 }
