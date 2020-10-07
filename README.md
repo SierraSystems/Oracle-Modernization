@@ -2,6 +2,13 @@
 
 Oracle Modernization is a proof-of-concept to migrate legacy Oracle Forms to modern software architecture.
 
+## Deploy backend to Azure
+
+```bash
+cd src\backend\management-api
+mvn clean package azure-webapp:deploy
+```
+
 ## Install Oracle on Azure
 
 Follow [this tutorial](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-database-quick-create#code-try-1)

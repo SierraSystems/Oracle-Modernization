@@ -1,9 +1,9 @@
 package com.nttdata.managementapi.controller;
 
-import com.nttdata.data.Contacts;
 import com.nttdata.managementapi.api.ManagementApiDelegate;
 import com.nttdata.managementapi.api.model.Contact;
 import com.nttdata.pocdata.ContactsService;
+import com.nttdata.pocdata.hibernate.Contacts;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

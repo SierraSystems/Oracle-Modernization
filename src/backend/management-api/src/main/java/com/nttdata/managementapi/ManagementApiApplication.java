@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(scanBasePackages = {"com.nttdata.managementapi","com.nttdata.pocdata"})
 @EnableTransactionManagement
 @EnableJpaRepositories("com.nttdata.pocdata")
-@EntityScan("com.nttdata.data")
+@EntityScan("com.nttdata.pocdata.hibernate")
 public class ManagementApiApplication {
 
 	public static void main(String[] args) {
