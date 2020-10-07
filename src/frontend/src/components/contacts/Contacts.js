@@ -63,7 +63,6 @@ export default function Contacts() {
         <table className="table table-striped table-hover table-bordered table-sm">
           <thead>
             <tr>
-              <th>ID</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
@@ -75,7 +74,6 @@ export default function Contacts() {
           <tbody>
             {contacts.map(contact => (
               <tr key={contact.contactId}>
-                <td>{contact.contactId}</td>
                 <td>{contact.firstName}</td>
                 <td>{contact.lastName}</td>
                 <td>{contact.email}</td>
