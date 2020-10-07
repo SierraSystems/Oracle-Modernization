@@ -5,6 +5,6 @@ hibernate.connection.url=${DATABASE_URL:jdbc:oracle:thin:@<server>:<port>:<insta
 hibernate.connection.username=${DATABASE_USERNAME}
 hibernate.connection.password=${DATABASE_PASSWORD}
 
-hibernate.c3p0.min_size=5
-hibernate.c3p0.max_size=20
-hibernate.c3p0.timeout=300
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
