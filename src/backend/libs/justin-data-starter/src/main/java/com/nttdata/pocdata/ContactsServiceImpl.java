@@ -31,7 +31,7 @@ public class ContactsServiceImpl implements ContactsService {
 
     @Override
     public Contacts addContact(Contacts contact) {
-        contact.setContactId(BigInteger.valueOf(StreamSupport.stream(contactsDao.findAll().spliterator(), false).count()));
+        contact.setContactId(BigInteger.valueOf(StreamSupport.stream(contactsDao.findAll().spliterator(), false).count() + 1));
         return contactsDao.save(contact);
     }
 
