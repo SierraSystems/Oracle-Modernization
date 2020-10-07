@@ -88,11 +88,6 @@
 			<artifactId>jaxb-api</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>5.3.6.Final</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -160,9 +155,14 @@
 						<artifactId>ojdbc8</artifactId>
 						<version>19.7.0.0</version>
 					</dependency>
+					<dependency>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate-c3p0</artifactId>
+						<version>5.3.6.Final</version>
+					</dependency>
 				</dependencies>
 				<configuration>
-					<propertyFile>src/main/resources/hibernate.properties</propertyFile>
+					<propertyFile>src/main/resources/oracle.properties</propertyFile>
 					<packageName>com.nttdata.pocdata.hibernate</packageName>
 					<jdk5>true</jdk5>
 				</configuration>
