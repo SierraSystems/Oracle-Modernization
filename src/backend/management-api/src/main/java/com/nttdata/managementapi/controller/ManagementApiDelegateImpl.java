@@ -60,7 +60,7 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
     public ResponseEntity<Void> deleteContact(BigDecimal contactId) {
 
         contactService.deleteContact(contactId.toBigInteger());
-        return null;
+        return ResponseEntity.ok().build();
 
     }
 
