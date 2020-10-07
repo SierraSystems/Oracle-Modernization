@@ -79,6 +79,21 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contacts"
+  "/management/contact/{contactId}/delete":
+    delete:
+      summary: delete contact by id
+      operationId: DeleteContact
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema:
+            type: number
+      tags:
+        - contact
+      responses:
+        "200":
+          description: contact was deleted
 components:
   schemas:
     Contact:

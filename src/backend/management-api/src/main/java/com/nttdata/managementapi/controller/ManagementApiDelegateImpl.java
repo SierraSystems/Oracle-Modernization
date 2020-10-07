@@ -7,9 +7,11 @@ import com.nttdata.pocdata.ContactsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.NativeWebRequest;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,33 +25,46 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
 
     @Override
     public ResponseEntity<Contact> getContact(BigDecimal contactId) {
-        Contact contact = new Contact();
-        contact.setContactId(BigDecimal.ONE);
-        contact.setCustomerId(BigDecimal.ONE);
-        contact.setEmail("bobross@paintit.com");
-        contact.setFirstName("Bob");
-        contact.setLastName("Ross");
-        contact.setPhoneNumber("123-456-7890");
-        return ResponseEntity.ok(contact);
+
+        Optional<Contacts> contacts = contactService.getContact(contactId);
+
+        return contacts.map(value -> ResponseEntity.ok(mapContact(value))).orElseGet(() -> new ResponseEntity("Client not found", HttpStatus.NOT_FOUND));
+
     }
 
     @Override
     public ResponseEntity<List<Contact>> getContacts() {
-
-
         return ResponseEntity.ok(contactService.getContacts().stream()
-                .map(contacts -> mapContact(contacts))
+                .map(this::mapContact)
                 .collect(Collectors.toList()));
     }
 
     @Override
     public ResponseEntity<Contact> addContact(Contact contact) {
-        return new ResponseEntity(contact, HttpStatus.CREATED);
+        Contacts contacts = contactService.saveContact(mapContacts(contact));
+        return new ResponseEntity(mapContact(contacts), HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<Contact> updateContact(Contact contact) {
-        return ResponseEntity.ok(contact);
+        Contacts contacts = contactService.saveContact(mapContacts(contact));
+        return ResponseEntity.ok(mapContact(contacts));
+    }
+
+    @Override
+    public ResponseEntity<Void> deleteContact(BigDecimal contactId) {
+        contactService.deleteContact(contactId);
+        return null;
+    }
+
+    private Contacts mapContacts(Contact contact) {
+        Contacts contacts = new Contacts();
+        contacts.setLastName(contact.getLastName());
+        contacts.setFirstName(contact.getFirstName());
+        contacts.setContactId(contact.getContactId().toBigInteger());
+        contacts.setEmail(contact.getEmail());
+        contacts.setPhone(contact.getPhoneNumber());
+        return contacts;
     }
 
     private Contact mapContact(Contacts contacts) {
