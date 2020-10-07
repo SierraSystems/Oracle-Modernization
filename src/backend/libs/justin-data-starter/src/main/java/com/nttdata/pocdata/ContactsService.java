@@ -1,6 +1,6 @@
 package com.nttdata.pocdata;
 
-import com.nttdata.data.Contacts;
+import com.nttdata.pocdata.hibernate.Contacts;
 
 import java.math.BigInteger;
 import java.util.List;

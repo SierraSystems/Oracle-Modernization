@@ -124,7 +124,7 @@
 				</dependencies>
 				<configuration>
 					<propertyFile>src/main/resources/hibernate.properties</propertyFile>
-					<packageName>com.nttdata.data</packageName>
+					<packageName>com.nttdata.pocdata.hibernate</packageName>
 					<jdk5>true</jdk5>
 				</configuration>
 				<executions>
@@ -140,7 +140,25 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.basedir}/target/generated-sources/</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

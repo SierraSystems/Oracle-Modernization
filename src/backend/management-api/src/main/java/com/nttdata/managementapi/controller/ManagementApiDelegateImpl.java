@@ -1,6 +1,6 @@
 package com.nttdata.managementapi.controller;
 
-import com.nttdata.data.Contacts;
+import com.nttdata.pocdata.hibernate.Contacts;
 import com.nttdata.managementapi.api.ManagementApiDelegate;
 import com.nttdata.managementapi.api.model.Contact;
 import com.nttdata.pocdata.ContactsService;
