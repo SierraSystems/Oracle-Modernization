@@ -11,7 +11,9 @@ public interface ContactsService {
 
     Optional<Contacts> getContact(BigInteger contactId);
 
-    Contacts saveContact(Contacts contact);
+    Contacts updateContact(Contacts contact);
+
+    Contacts addContact(Contacts contact);
 
     void deleteContact(BigInteger contactId);
 }

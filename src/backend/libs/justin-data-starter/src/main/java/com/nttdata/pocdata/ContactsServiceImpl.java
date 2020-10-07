@@ -31,7 +31,13 @@ public class ContactsServiceImpl implements ContactsService {
     }
 
     @Override
-    public Contacts saveContact(Contacts contact) {
+    public Contacts addContact(Contacts contact) {
+        contact.setContactId(BigInteger.valueOf(StreamSupport.stream(contactsDao.findAll().spliterator(), false).count()));
+        return contactsDao.save(contact);
+    }
+
+    @Override
+    public Contacts updateContact(Contacts contact) {
         return contactsDao.save(contact);
     }
 
