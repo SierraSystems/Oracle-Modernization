@@ -43,7 +43,7 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
     @Override
     public ResponseEntity<Contact> addContact(Contact contact) {
 
-        Contacts contacts = contactService.saveContact(mapContacts(contact));
+        Contacts contacts = contactService.addContact(mapContacts(contact));
         return new ResponseEntity(mapContact(contacts), HttpStatus.CREATED);
 
     }
@@ -51,7 +51,7 @@ public class ManagementApiDelegateImpl implements ManagementApiDelegate {
     @Override
     public ResponseEntity<Contact> updateContact(Contact contact) {
 
-        Contacts contacts = contactService.saveContact(mapContacts(contact));
+        Contacts contacts = contactService.updateContact(mapContacts(contact));
         return ResponseEntity.ok(mapContact(contacts));
 
     }
