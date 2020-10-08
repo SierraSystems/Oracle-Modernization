@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Button, Input } from 'shared-components';
 import Contacts from '../contacts/Contacts';
 
@@ -29,6 +30,17 @@ const generateInput = (id, label, setAddedContact, addedContact) => {
   );
 };
 
+const addNewContact = (addedContact, setShowContacts) => {
+  axios
+    .post('/management/contact/add', addedContact)
+    .then((res) => {
+      if (res.status === 201) setShowContacts(true);
+    })
+    .catch((err) => {
+      console.log('Error adding a new contact: ', err);
+    });
+};
+
 export default function AddContact({ contact }) {
   const [addedContact, setAddedContact] = useState({});
   const [showContacts, setShowContacts] = useState(false);
@@ -48,6 +60,7 @@ export default function AddContact({ contact }) {
         <Button
           label="Add New Contact"
           styling="normal-blue btn space-right"
+          onClick={() => addNewContact(addedContact, setShowContacts)}
         />
         <Button
           label="Cancel"
