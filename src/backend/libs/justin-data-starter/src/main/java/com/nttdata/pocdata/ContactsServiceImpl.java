@@ -4,6 +4,7 @@ import com.nttdata.pocdata.hibernate.Contacts;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,7 +32,7 @@ public class ContactsServiceImpl implements ContactsService {
 
     @Override
     public Contacts addContact(Contacts contact) {
-        contact.setContactId(BigInteger.valueOf(StreamSupport.stream(contactsDao.findAll().spliterator(), false).count() + 1));
+        contact.setContactId(getNextId());
         return contactsDao.save(contact);
     }
 
@@ -44,4 +45,16 @@ public class ContactsServiceImpl implements ContactsService {
     public void deleteContact(BigInteger contactId) {
         contactsDao.deleteById(contactId);
     }
+
+    private BigInteger getNextId() {
+        Optional<Contacts> maxIdContact = StreamSupport.stream(contactsDao
+                        .findAll()
+                        .spliterator()
+                        , false)
+                        .max(Comparator.comparing(Contacts::getContactId));
+        //If there are no contacts present it is assumed there are none in the db and one will be the id
+        return maxIdContact.isPresent() ?  maxIdContact.get().getContactId().add(BigInteger.ONE) : BigInteger.ONE;
+    }
+
+
 }
