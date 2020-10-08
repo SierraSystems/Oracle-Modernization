@@ -9,33 +9,14 @@ import './Contacts.css';
 import SimpleModal from '../simple-modal/SimpleModal';
 
 const getContacts = (setContacts, setAlertMessage) => {
-  // axios
-  //   .get("/management/contacts")
-  //   .then((res) => {
-  //     setContacts(res.data);
-  //   })
-  //   .catch(() => {
-  //     setAlertMessage('Error getting contacts');
-  //   });
-  setContacts(
-    [{
-      contactId: 1,
-      firstName: "Kyle",
-      lastName: "Flood",
-      email: "kylefood@good.com",
-      phoneNumber: "123-223-3333",
-      customerId: 123
-    },
-    {
-      contactId: 1,
-      firstName: "Kyle",
-      lastName: "Flood",
-      email: "kylefood@good.com",
-      phoneNumber: "123-223-3333",
-      customerId: 123
-    }
-  ]
-  )
+  axios
+    .get("/management/contacts")
+    .then((res) => {
+      setContacts(res.data);
+    })
+    .catch(() => {
+      setAlertMessage('Error getting contacts');
+    });
 };
 
 const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContacts) => {
