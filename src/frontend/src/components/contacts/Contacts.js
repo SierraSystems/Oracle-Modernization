@@ -15,7 +15,6 @@ const getContacts = (setContacts, setAlertMessage) => {
       setContacts(res.data);
     })
     .catch(() => {
-      console.log('heeyeyye')
       setAlertMessage('Error getting contacts');
     });
 };
@@ -67,7 +66,6 @@ export default function Contacts() {
     <>
       {alertMessage === "Error getting contacts" || alertMessage === "Error deleting contact" && (
         <>
-          <p>heheheh</p>
           <Alert icon={<MdCancel size={32} />} type="error" styling="error-background" element={alertMessage} />
           <br />
         </>
