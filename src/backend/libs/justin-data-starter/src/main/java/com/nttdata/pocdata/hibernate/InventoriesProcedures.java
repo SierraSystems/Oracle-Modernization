@@ -25,15 +25,5 @@ import java.math.BigInteger;
                                 mode = ParameterMode.OUT)})
 })
 public class InventoriesProcedures extends Inventories {
-    private int inventory_result;
-
-    @Column(name="INVENTORY_RESULT", nullable=true, precision=8, scale=0)
-    public int getInventory() {
-        return this.inventory_result;
-    }
-
-    public void setInventory(int inventory_result) {
-        this.inventory_result = inventory_result;
-    }
 
 }
