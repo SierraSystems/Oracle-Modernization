@@ -9,14 +9,33 @@ import './Contacts.css';
 import SimpleModal from '../simple-modal/SimpleModal';
 
 const getContacts = (setContacts, setAlertMessage) => {
-  axios
-    .get("/management/contacts")
-    .then((res) => {
-      setContacts(res.data);
-    })
-    .catch(() => {
-      setAlertMessage('Error getting contacts');
-    });
+  // axios
+  //   .get("/management/contacts")
+  //   .then((res) => {
+  //     setContacts(res.data);
+  //   })
+  //   .catch(() => {
+  //     setAlertMessage('Error getting contacts');
+  //   });
+  setContacts(
+    [{
+      contactId: 1,
+      firstName: "Kyle",
+      lastName: "Flood",
+      email: "kylefood@good.com",
+      phoneNumber: "123-223-3333",
+      customerId: 123
+    },
+    {
+      contactId: 1,
+      firstName: "Kyle",
+      lastName: "Flood",
+      email: "kylefood@good.com",
+      phoneNumber: "123-223-3333",
+      customerId: 123
+    }
+  ]
+  )
 };
 
 const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContacts) => {
@@ -87,7 +106,7 @@ export default function Contacts() {
             <Loader page />
           )}
           {contacts.length > 0 && (
-            <table className="table table-striped table-hover table-bordered table-sm">
+            <table className="table table-hover table-bordered table-sm">
               <thead>
                 <tr>
                   <th>First Name</th>
@@ -98,8 +117,8 @@ export default function Contacts() {
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody>
-                {contacts.map(contact => (
+              {contacts.map(contact => (
+                <tbody>
                   <tr key={contact.contactId}>
                     <td>{contact.firstName}</td>
                     <td>{contact.lastName}</td>
@@ -120,8 +139,8 @@ export default function Contacts() {
                       </div>
                     </td>
                   </tr>
-                ))}
-              </tbody>
+                </tbody>
+              ))}
             </table>
           )}
         </>
