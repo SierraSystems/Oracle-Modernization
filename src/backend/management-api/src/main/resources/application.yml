@@ -1,0 +1,31 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    max-active: 10
+    initial-size: 5
+    max-idle: 5
+    min-idle: 1
+    test-while-idle: true
+    test-on-borrow: true
+    validation-query: SELECT 1 FROM DUAL
+    hikari:
+      sql-script-encoding: UTF-8
+      connectionTimeout: ${SQL_CONNECTION_TIMEOUT:30000}
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    show-sql: ${SHOW_SQL:false}
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: ${HIB_GENERATE_STATS:false}
+        connection:
+          release_mode: after_transaction
+          current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
+      org:
+        hibernate:
+          flushMode: MANUAL
