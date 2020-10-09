@@ -23,3 +23,9 @@ spring:
       hibernate:
         format_sql: true
         generate_statistics: ${HIB_GENERATE_STATS:false}
+        connection:
+          release_mode: after_transaction
+          current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
+      org:
+        hibernate:
+          flushMode: MANUAL
