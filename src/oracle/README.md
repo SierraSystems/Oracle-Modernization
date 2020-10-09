@@ -14,3 +14,9 @@ Open your favorite editor and execute the scripts in the slq folder in the follo
 1. [ot_warehouse.sql](src/oracle/sql/ot_warehouse.sql)
 
 Your Database is ready!
+
+## Troubleshouting
+
+When restarting the VM, ip will change and nic might need to be [reconfigured](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/reset-network-interface)
+
+If you still can't connect to the VM enable the oracle listener `$ sudo -su oracle` && `lsnrctl start` and set the SID `ORACLE_SID=cdb1; export ORACLE_SID`
