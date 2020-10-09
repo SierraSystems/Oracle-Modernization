@@ -9,18 +9,6 @@ cd src\backend\management-api
 mvn clean package azure-webapp:deploy
 ```
 
-## Install Oracle on Azure
-
-Follow [this tutorial](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-database-quick-create#code-try-1)
-
-> When restarting the VM, ip will change and nic might need to be [reconfigured](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/reset-network-interface)
-> If you still can't connect to the VM enable the oracle listener `$ sudo -su oracle` && `lsnrctl start` and set the SID `ORACLE_SID=cdb1; export ORACLE_SID`
-
-Connect to the database using sql developer and create the [oracle-sample-database](https://www.oracletutorial.com/getting-started/oracle-sample-database/)
-
-Fix the form builder here:
-https://devio.wordpress.com/2010/09/22/forms_builder_classpath-not-set-after-installation-of-oracle-forms-builder-11-1-1-2-0/
-
 ## Configure Data Starter
 
 Copy `src\backend\libs\justin-data-starter\src\main\resources\hibernate.properties.template` to `src\backend\libs\justin-data-starter\src\main\resources\hibernate.properties`
@@ -69,3 +57,6 @@ To connect to the database go to file > Connect... and enter the database creden
 > Do not specifiy the PORT in the connection string (this can cost lots of time)
 
 Install [jdeveloper-12c](https://www.oracle.com/tools/downloads/jdev-v12120-downloads.html) and choose the 32bit version as they are mixed up ;-)
+
+Fix the form builder here:
+https://devio.wordpress.com/2010/09/22/forms_builder_classpath-not-set-after-installation-of-oracle-forms-builder-11-1-1-2-0/
