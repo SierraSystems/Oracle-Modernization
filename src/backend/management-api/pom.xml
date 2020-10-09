@@ -178,8 +178,8 @@
         <version>1.8.0</version>
         <configuration>
           <schemaVersion>V2</schemaVersion>
-          <resourceGroup>oracle2</resourceGroup>
-          <appName>management-api-014236578654</appName>
+          <resourceGroup>oracle-modernization</resourceGroup>
+          <appName>ntt-oracle-modernization-api</appName>
           <pricingTier>P1v2</pricingTier>
           <region>westus</region>
           <runtime>
