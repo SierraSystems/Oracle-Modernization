@@ -39,6 +39,8 @@ export default function AuthenticationGuard() {
 
           localStorage.setItem("jwt", keycloak.token);
           setAuthedKeycloak(keycloak);
+        } else {
+          keycloak.login();
         }
       });
   }
@@ -50,7 +52,7 @@ export default function AuthenticationGuard() {
   return (
     <>
       {authedKeycloak && <Home />}
-      {!authedKeycloak && null}
+      {!authedKeycloak && null }
     </>
   );
 }
