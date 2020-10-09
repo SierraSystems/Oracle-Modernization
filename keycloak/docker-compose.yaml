@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+
+  #############################################################################################
+  ###                                        KEYCLOAK                                       ###
+  #############################################################################################
+
+  keycloak:
+    image: jboss/keycloak
+    environment:
+      DB_VENDOR: H2
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_AUTH_SERVER_URL: ${REPLACE_URL_HERE}
+      PROXY_ADDRESS_FORWARDING: true
+    ports:
+      - 8080:8080
