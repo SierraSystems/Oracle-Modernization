@@ -164,7 +164,7 @@ CREATE TABLE ot.order_items
       ON DELETE CASCADE,
     CONSTRAINT fk_order_items_orders 
       FOREIGN KEY( order_id )
-      REFERENCES orders( order_id ) 
+      REFERENCES ot.orders( order_id ) 
       ON DELETE CASCADE
   );
 -- inventories
