@@ -33,10 +33,9 @@ export default function AuthenticationGuard() {
       .init({
         checkLoginIframe: false,
       })
-      .success((authenticated) => {
+      .then((authenticated) => {
         if (authenticated) {
-          keycloak.loadUserInfo().success();
-
+          keycloak.loadUserInfo();
           localStorage.setItem("jwt", keycloak.token);
           setAuthedKeycloak(keycloak);
         } else {
