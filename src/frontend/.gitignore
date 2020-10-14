@@ -16,6 +16,8 @@
 .env.local
 .env.development.local
 .env.development
+.env
+.env.production
 .env.test.local
 .env.production.local
 
