@@ -1,5 +1,5 @@
 {
-  "name": "justin-poc-electron-app",
+  "name": "oraclemodernization",
   "version": "0.1.0",
   "private": true,
   "main": "src/start.js",
@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "@bcgov/bootstrap-theme": "github:bcgov/bootstrap-theme",
+    "@capacitor/cli": "^2.4.2",
+    "@capacitor/core": "^2.4.2",
+    "@capacitor/ios": "^2.4.2",
     "axios": "^0.20.0",
     "electron": "^10.1.3",
     "keycloak-js": "^11.0.2",

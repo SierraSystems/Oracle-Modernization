@@ -1,9 +1,9 @@
 import React from 'react';
-import AuthenticationGuard from './components/hoc/AuthenticationGuard';
+import Home from './components/home/Home';
 
 function App() {
   return (
-    <AuthenticationGuard />
+    <Home />
   );
 }
 

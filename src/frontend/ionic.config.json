@@ -1,0 +1,7 @@
+{
+  "name": "oraclemodernization",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
