@@ -13,7 +13,6 @@ export default function Home() {
     <>
       <br />
       <br />
-      <br />
       <main>
         <Header header={header} />
         <div className="page">
