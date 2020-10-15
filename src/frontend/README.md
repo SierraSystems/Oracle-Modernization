@@ -1,6 +1,6 @@
 # Oracle Modernization - Frontend
 
-Electron Desktop / React Web Frontend for the Oracle Modernization proof-of-concept application.
+iOS frontend for the Oracle Modernization proof-of-concept application.
 
 ## Run iOS App
 
