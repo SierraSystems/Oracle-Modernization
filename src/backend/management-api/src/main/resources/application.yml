@@ -16,6 +16,8 @@ spring:
     hikari:
       sql-script-encoding: UTF-8
       connectionTimeout: ${SQL_CONNECTION_TIMEOUT:30000}
+      idleTimeout: ${HIKARI_IDLE_TIMEOUT:600000}
+      maxLifetime: ${HIKARI_MAX_LIFETIME:1800000}
   jpa:
     database-platform: org.hibernate.dialect.Oracle12cDialect
     show-sql: ${SHOW_SQL:false}
