@@ -31,3 +31,12 @@ spring:
       org:
         hibernate:
           flushMode: MANUAL
+keycloak:
+  auth-server-url: ${KEYCLOAK_AUTH_SERVER_URL}
+  realm: ${KEYCLOAK_REALM}
+  resource: ${KEYCLOAK_RESOURCE}
+  credentials:
+    secret: ${KEYCLOAK_CREDENTIALS_SECRET}
+  use-resource-role-mappings: true
+  bearer-only: true
+  ssl-required: ${KEYCLOAK_SSL_REQUIRED:external}
