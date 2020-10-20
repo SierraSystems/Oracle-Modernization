@@ -15,14 +15,14 @@ import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 @Path("/management")
-public class GreetingResource {
+public class ContactsResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/contacts")
     @Transactional
     public List<Contacts> getContacts() {
-        return Contacts.listAll();
+        return Contacts.findAll(Sort.by("CONTACT_ID").ascending()).list();
     }
 
     @GET
@@ -51,9 +51,13 @@ public class GreetingResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Contacts update(Contacts contacts) {
+        //MAGIC TIME
         Contacts entity = Contacts.findById(contacts.getContactId());
-        //contacts.persist();
-        entity = contacts;
+
+        entity.setLastName(contacts.getLastName());
+        entity.setFirstName(contacts.getFirstName());
+        entity.setPhone(contacts.getPhone());
+        entity.setEmail(contacts.getEmail());
 
         return entity;
     }
