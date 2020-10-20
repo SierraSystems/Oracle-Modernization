@@ -8,9 +8,8 @@ ARG SKIP_TESTS=false
 
 COPY . .
 
-WORKDIR ${SERVICE_NAME}
-
-RUN mvn -B clean package \
+RUN mvn -B clean install \
+        -P all \
         -Dmaven.test.skip=${SKIP_TESTS}
 
 #############################################################################################
