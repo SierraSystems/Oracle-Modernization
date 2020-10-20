@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oracle-modernization-frontend
+  labels:
+    app: oracle-modernization-frontend
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: oracle-modernization-frontend
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oracle-modernization-frontend
+  labels:
+    app: oracle-modernization-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: oracle-modernization-frontend
+  template:
+    metadata:
+      labels:
+        app: oracle-modernization-frontend
+    spec:
+      containers:
+      - name: oracle-modernization-frontend
+        image: nttomregistry.azurecr.io/oracle-modernization_frontend
+        ports:
+        - containerPort: 80

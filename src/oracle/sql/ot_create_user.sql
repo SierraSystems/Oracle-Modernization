@@ -13,6 +13,8 @@
 -- grant priviledges
 --------------------------------------------------------------------
 
+alter session set "_ORACLE_SCRIPT"=true;
+
 -- create new user
 CREATE USER OT IDENTIFIED BY yourpassword;
 

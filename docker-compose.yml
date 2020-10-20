@@ -1,6 +1,25 @@
 version: "3"
 services:
 
+  frontend:
+    build:
+      context: ./src/frontend
+    ports:
+      - "3000:80"
+    networks: 
+      - ora-modern
+
+  backend:
+    build:
+      context: ./src/backend
+      args:
+        - SERVICE_NAME=management-api
+        - SKIP_TESTS=true
+    ports:
+      - "5050:8080"
+    networks: 
+      - ora-modern
+
   metabase-app:
     image: metabase/metabase
     restart: always
