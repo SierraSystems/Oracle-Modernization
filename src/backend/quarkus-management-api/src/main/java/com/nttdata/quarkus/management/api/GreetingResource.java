@@ -4,23 +4,24 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import com.nttdata.pocdata.InventoriesService;
-import com.nttdata.pocdata.hibernate.Contacts;
-import org.springframework.http.ResponseEntity;
+
+import io.agroal.api.AgroalDataSource;
+
+import java.util.List;
 
 @Path("/hello")
 public class GreetingResource {
-
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
+    public String hello()
+    {
         return "mello yellow";
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/contacts")
-    public ResponseEntity<Contacts> getContacts() {
-        return ResponseEntity.ok(new Contacts());
+    public List<Contacts> getContacts() {
+        return Contacts.listAll();
     }
 }
