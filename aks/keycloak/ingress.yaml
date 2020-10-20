@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: keycloak-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  tls:
+  - hosts:
+    - ntt-om-keycloak.canadacentral.cloudapp.azure.com
+    secretName: tls-secret
+  rules:
+  - host: ntt-om-keycloak.canadacentral.cloudapp.azure.com
+    http:
+      paths: 
+      - backend:
+            serviceName: keycloak
+            servicePort: 8080
