@@ -1,4 +1,4 @@
-package com.nttdata.quarkus.management.api.model;
+package com.nttdata.quarkus.management.api.model.database;
 // Generated Oct 20, 2020 7:29:03 AM by Hibernate Tools 6.0.0.Alpha2
 
 

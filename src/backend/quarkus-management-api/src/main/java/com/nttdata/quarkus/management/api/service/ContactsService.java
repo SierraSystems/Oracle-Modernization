@@ -1,12 +1,11 @@
 package com.nttdata.quarkus.management.api.service;
 
-import com.nttdata.quarkus.management.api.model.Contacts;
+import com.nttdata.quarkus.management.api.model.database.Contacts;
 
-import javax.enterprise.context.ApplicationScoped;
 import java.math.BigInteger;
 import java.util.List;
 
-@ApplicationScoped
+
 public interface ContactsService {
     List<Contacts> getContacts();
 

@@ -1,8 +1,7 @@
 package com.nttdata.quarkus.management.api.service;
 
 import com.nttdata.quarkus.management.api.dao.ContactsDao;
-import com.nttdata.quarkus.management.api.model.Contacts;
-import io.quarkus.arc.Unremovable;
+import com.nttdata.quarkus.management.api.model.database.Contacts;
 import io.quarkus.panache.common.Sort;
 
 import javax.enterprise.context.ApplicationScoped;
