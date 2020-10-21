@@ -98,3 +98,21 @@ Adding docker registry
 ```bash
 az acr create --resource-group oracle-modernization --name nttomregistry --sku Basic
 ```
+
+## Configure Azure Registry
+
+follow this [cluster-container-registry-integration](https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration) or run the following steps
+
+
+Create Azure Container Registry
+
+```
+cd acr
+.\acr.sh
+```
+
+Attach Container Registry to AKS
+
+```
+az aks update -n om-k8 -g oracle-modernization --attach-acr nttOracleModernizationR
+```
