@@ -1,4 +1,4 @@
-package com.nttdata.quarkus.management.api;
+package com.nttdata.quarkus.management.api.model.database;
 // Generated Oct 20, 2020 7:29:03 AM by Hibernate Tools 6.0.0.Alpha2
 
 
@@ -13,10 +13,11 @@ import java.math.BigInteger;
 @Entity
 @Table(name="CONTACTS"
 )
-public class Contacts extends PanacheEntityBase implements java.io.Serializable  {
+public class Contacts extends PanacheEntityBase implements java.io.Serializable {
 
 
      private BigInteger contactId;
+     private Customers customers;
      private String firstName;
      private String lastName;
      private String email;
@@ -32,17 +33,18 @@ public class Contacts extends PanacheEntityBase implements java.io.Serializable 
         this.lastName = lastName;
         this.email = email;
     }
-    public Contacts(BigInteger contactId, String firstName, String lastName, String email, String phone) {
+    public Contacts(BigInteger contactId, Customers customers, String firstName, String lastName, String email, String phone) {
        this.contactId = contactId;
+       this.customers = customers;
        this.firstName = firstName;
        this.lastName = lastName;
        this.email = email;
        this.phone = phone;
     }
+   
+     @Id 
 
-     @Id
-
-
+    
     @Column(name="CONTACT_ID", unique=true, nullable=false, precision=22, scale=0)
     public BigInteger getContactId() {
         return this.contactId;
@@ -52,6 +54,15 @@ public class Contacts extends PanacheEntityBase implements java.io.Serializable 
         this.contactId = contactId;
     }
 
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="CUSTOMER_ID")
+    public Customers getCustomers() {
+        return this.customers;
+    }
+    
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
+    }
 
     
     @Column(name="FIRST_NAME", nullable=false, length=255)
