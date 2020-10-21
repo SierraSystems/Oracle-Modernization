@@ -4,11 +4,13 @@ import com.nttdata.quarkus.management.api.dao.CustomersDao;
 import com.nttdata.quarkus.management.api.model.database.Customers;
 import io.quarkus.panache.common.Sort;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
 import java.math.BigInteger;
 import java.util.List;
 
+@ApplicationScoped
 public class CustomersServiceImpl implements CustomersService {
 
     @Inject

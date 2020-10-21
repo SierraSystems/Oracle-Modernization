@@ -38,14 +38,14 @@ public class CustomersResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/contacts/{customerId}")
+    @Path("/customers/{customerId}")
     @Transactional
     public Customer getCustomer(@PathParam BigInteger customerId) {
         return mapCustomer(customersService.getCustomer(customerId));
     }
 
     @POST
-    @Path("/contacts/add")
+    @Path("/customers/add")
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response create(Customer customer) {
@@ -58,7 +58,7 @@ public class CustomersResource {
     }
 
     @PUT
-    @Path("/contacts/update")
+    @Path("/customers/update")
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response update(Customer customer) {
@@ -66,7 +66,7 @@ public class CustomersResource {
     }
 
     @DELETE
-    @Path("/contacts/{customerId}/delete")
+    @Path("/customers/{customerId}/delete")
     @Transactional
     public Response delete(@PathParam BigInteger customerId) {
         customersService.deleteCustomer(customerId);
