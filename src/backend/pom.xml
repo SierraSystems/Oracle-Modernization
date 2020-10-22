@@ -24,6 +24,7 @@
 			<modules>
 				<module>libs/justin-data-starter</module>
 				<module>management-api</module>
+				<module>quarkus-management-api</module>
 			</modules>
 		</profile>
 	</profiles>
