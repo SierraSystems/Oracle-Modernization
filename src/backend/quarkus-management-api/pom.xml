@@ -124,6 +124,10 @@
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-joda</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.jboss.logmanager</groupId>
+      <artifactId>log4j2-jboss-logmanager</artifactId>
+    </dependency>
   </dependencies>
 <build>
   <plugins>
