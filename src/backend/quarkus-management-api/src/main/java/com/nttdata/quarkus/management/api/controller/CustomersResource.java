@@ -1,8 +1,6 @@
 package com.nttdata.quarkus.management.api.controller;
 
-import com.nttdata.quarkus.management.api.model.api.Contact;
 import com.nttdata.quarkus.management.api.model.api.Customer;
-import com.nttdata.quarkus.management.api.model.database.Contacts;
 import com.nttdata.quarkus.management.api.model.database.Customers;
 import com.nttdata.quarkus.management.api.service.CustomersService;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
@@ -98,4 +96,5 @@ public class CustomersResource {
         return customer;
 
     }
+
 }

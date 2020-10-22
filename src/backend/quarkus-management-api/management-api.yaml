@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: Oracle Modernization Management API
+  description: Management API
+servers:
+  - url: "http://localhost:8080"
+tags:
+  - name: contact
+    description: Endpoints for contact data
+paths:
+  "/management/contact/update":
+    put:
+      summary: Update
+      operationId: Update Contact
+      tags:
+        - contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        "200":
+          description: Contact was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+  "/management/contact/add":
+    post:
+      summary: Add
+      operationId: Add Contact
+      tags:
+        - contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        "201":
+          description: Contact was added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+  "/management/contact/{contactId}":
+    get:
+      summary: get a contact by id
+      operationId: GetContact
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema:
+            type: number
+      tags:
+        - contact
+      responses:
+        "200":
+          description: contact found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        "404":
+          description: contact not found
+  "/management/contacts":
+    get:
+      summary: get all contacts
+      operationId: GetContacts
+      tags:
+        - contact
+      responses:
+        "200":
+          description: get all contacts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contacts"
+  "/management/contact/{contactId}/delete":
+    delete:
+      summary: delete contact by id
+      operationId: DeleteContact
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema:
+            type: number
+      tags:
+        - contact
+      responses:
+        "200":
+          description: contact was deleted
+components:
+  schemas:
+    Contact:
+      type: object
+      description: Contact
+      properties:
+        contactId:
+          type: number
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        customerId:
+          type: number
+    Contacts:
+      type: array
+      description: Contacts
+      items:
+        $ref: "#/components/schemas/Contact"

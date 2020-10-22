@@ -17,6 +17,7 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.9.0.CR1</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <default-package>com.nttdata.quarkus.management.api</default-package>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -108,6 +109,21 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-keycloak-authorization</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-jaxrs</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.10.6</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-joda -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-joda</artifactId>
+    </dependency>
   </dependencies>
 <build>
   <plugins>
@@ -138,6 +154,50 @@
           <maven.home>${maven.home}</maven.home>
         </systemPropertyVariables>
       </configuration>
+    </plugin>
+    <plugin>
+      <groupId>org.openapitools</groupId>
+      <artifactId>openapi-generator-maven-plugin</artifactId>
+      <version>4.3.1</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>generate</goal>
+          </goals>
+          <configuration>
+            <inputSpec>${project.basedir}/management-api.yaml</inputSpec>
+            <generatorName>jaxrs-resteasy-eap</generatorName>
+            <configOptions>
+              <dateLibrary>joda</dateLibrary>
+              <generateJbossDeploymentDescriptor>false</generateJbossDeploymentDescriptor>
+              <implFolder>garbage</implFolder>
+            </configOptions>
+            <apiPackage>${default-package}.openapi</apiPackage>
+            <modelPackage>${default-package}.openapi.model</modelPackage>
+            <invokerPackage>${default-package}.openapi.handler</invokerPackage>
+            <generateSupportingFiles>false</generateSupportingFiles>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>build-helper-maven-plugin</artifactId>
+      <version>3.2.0</version>
+      <executions>
+        <execution>
+          <id>add-source</id>
+          <phase>generate-sources</phase>
+          <goals>
+            <goal>add-source</goal>
+          </goals>
+          <configuration>
+            <sources>
+              <source>${project.basedir}/target/generated-sources/openapi/src/gen</source>
+            </sources>
+          </configuration>
+        </execution>
+      </executions>
     </plugin>
   </plugins>
 </build>
