@@ -7,6 +7,7 @@ import com.nttdata.quarkus.management.api.model.database.Customers;
 import com.nttdata.quarkus.management.api.service.CustomersService;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -67,6 +68,7 @@ public class CustomersResource {
 
     @DELETE
     @Path("/customers/{customerId}/delete")
+    @RolesAllowed("nope")
     @Transactional
     public Response delete(@PathParam BigInteger customerId) {
         customersService.deleteCustomer(customerId);
