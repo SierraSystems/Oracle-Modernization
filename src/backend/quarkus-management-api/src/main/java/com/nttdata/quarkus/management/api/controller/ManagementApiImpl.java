@@ -21,17 +21,20 @@ public class ManagementApiImpl implements ManagementApi {
     ContactsService contactsService;
 
     @Override
+    @Transactional
     public Response addContact(@Valid Contact contact, SecurityContext securityContext) {
-        return Response.ok(contactsService.addContact(mapContacts(contact))).status(201).build();
+        return Response.ok(mapContact(contactsService.addContact(mapContacts(contact)))).status(201).build();
     }
 
     @Override
+    @Transactional
     public Response deleteContact(BigDecimal contactId, SecurityContext securityContext) {
         contactsService.deleteContact(contactId.toBigInteger());
         return Response.status(204).build();
     }
 
     @Override
+    @Transactional
     public Response getContact(BigDecimal contactId, SecurityContext securityContext) {
         return Response.ok(mapContact(contactsService.getContact(contactId.toBigInteger()))).build();
     }
@@ -48,8 +51,9 @@ public class ManagementApiImpl implements ManagementApi {
     }
 
     @Override
+    @Transactional
     public Response updateContact(@Valid Contact contact, SecurityContext securityContext) {
-        return Response.ok(contactsService.updateContact(mapContacts(contact))).status(200).build();
+        return Response.ok(mapContact(contactsService.updateContact(mapContacts(contact)))).status(200).build();
     }
 
     private Contact mapContact(Contacts contacts) {
@@ -75,7 +79,6 @@ public class ManagementApiImpl implements ManagementApi {
 
         contacts.setLastName(contact.getLastName());
         contacts.setFirstName(contact.getFirstName());
-        contacts.setContactId((contact.getContactId() != null) ? contact.getContactId().toBigInteger() : null);
         contacts.setEmail(contact.getEmail());
         contacts.setPhone(contact.getPhoneNumber());
 
