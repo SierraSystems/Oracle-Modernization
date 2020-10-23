@@ -36,16 +36,16 @@ spec:
         - containerPort: 8080
         env:
           - name: DATABASE_URL
-            value: "jdbc:oracle:thin:@20.151.0.99:1521:om"
+            value: ${DATABASE_URL}
           - name: DATABASE_USERNAME
-            value: "ot"
+            value: ${DATABASE_NAME}
           - name: DATABASE_PASSWORD
-            value: "Iam0racle1"
+            value: ${DATABASE_PASSWORD}
           - name: KEYCLOAK_AUTH_SERVER_URL
-            value: "http://ntt-om-keycloak.canadacentral.cloudapp.azure.com/auth/"
+            value: ${KEYCLOAK_AUTH_SERVER_URL}
           - name: KEYCLOAK_REALM
             value: "master"
           - name: KEYCLOAK_RESOURCE
             value: "oracle-modernization-api"
           - name: KEYCLOAK_CREDENTIALS_SECRET
-            value: "1fa1aa91-1b2c-4d03-b999-42029e144a55"
+            value: ${KEYCLOAK_CREDENTIALS_SECRET}
