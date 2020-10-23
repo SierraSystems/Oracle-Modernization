@@ -128,6 +128,11 @@
       <groupId>org.jboss.logmanager</groupId>
       <artifactId>log4j2-jboss-logmanager</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>1.4.1.Final</version>
+    </dependency>
   </dependencies>
 <build>
   <plugins>
@@ -148,6 +153,15 @@
     <plugin>
       <artifactId>maven-compiler-plugin</artifactId>
       <version>${compiler-plugin.version}</version>
+      <configuration>
+        <annotationProcessorPaths>
+          <path>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.4.1.Final</version>
+          </path>
+        </annotationProcessorPaths>
+      </configuration>
     </plugin>
     <plugin>
       <artifactId>maven-surefire-plugin</artifactId>
