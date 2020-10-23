@@ -31,7 +31,6 @@ public class ContactsApiServiceImpl implements ContactsApi {
         this.contactMapper = contactMapper;
     }
 
-
     @Override
     @Transactional
     public Response addContact(@Valid Contact contact, SecurityContext securityContext) {
