@@ -6,17 +6,17 @@ info:
 servers:
   - url: "http://localhost:8080"
 tags:
-  - name: contact
+  - name: contacts
     description: Endpoints for contact data
-  - name: customer
+  - name: customers
     description: Endpoints for customer data
 paths:
-  "/management/contact/update":
+  "/contacts/update":
     put:
       summary: Update
       operationId: Update Contact
       tags:
-        - contact
+        - contacts
       requestBody:
         content:
           application/json:
@@ -29,12 +29,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-  "/management/contact/add":
+  "/contacts/add":
     post:
       summary: Add
       operationId: Add Contact
       tags:
-        - contact
+        - contacts
       requestBody:
         content:
           application/json:
@@ -47,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-  "/management/contact/{contactId}":
+  "/contacts/{contactId}":
     get:
       summary: get a contact by id
       operationId: GetContact
@@ -58,7 +58,7 @@ paths:
           schema:
             type: number
       tags:
-        - contact
+        - contacts
       responses:
         "200":
           description: contact found
@@ -68,12 +68,12 @@ paths:
                 $ref: "#/components/schemas/Contact"
         "404":
           description: contact not found
-  "/management/contacts":
+  "/contacts":
     get:
       summary: get all contacts
       operationId: GetContacts
       tags:
-        - contact
+        - contacts
       responses:
         "200":
           description: get all contacts
@@ -81,7 +81,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contacts"
-  "/management/contact/{contactId}/delete":
+  "/contacts/{contactId}/delete":
     delete:
       summary: delete contact by id
       operationId: DeleteContact
@@ -92,16 +92,16 @@ paths:
           schema:
             type: number
       tags:
-        - contact
+        - contacts
       responses:
         "200":
           description: contact was deleted
-  "/management/customer/update":
+  "/customers/update":
     put:
       summary: Update
       operationId: Update Customer
       tags:
-        - customer
+        - customers
       requestBody:
         content:
           application/json:
@@ -114,12 +114,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Customer"
-  "/management/customer/add":
+  "/customers/add":
     post:
       summary: Add
       operationId: Add Customer
       tags:
-        - customer
+        - customers
       requestBody:
         content:
           application/json:
@@ -132,7 +132,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Customer"
-  "/management/customer/{customerId}":
+  "/customers/{customerId}":
     get:
       summary: get a customer by id
       operationId: GetCustomer
@@ -143,7 +143,7 @@ paths:
           schema:
             type: number
       tags:
-        - customer
+        - customers
       responses:
         "200":
           description: customer found
@@ -153,12 +153,12 @@ paths:
                 $ref: "#/components/schemas/Customer"
         "404":
           description: customer not found
-  "/management/customers":
+  "/customers":
     get:
       summary: get all customers
       operationId: GetCustomers
       tags:
-        - customer
+        - customers
       responses:
         "200":
           description: get all customers
@@ -166,7 +166,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Customers"
-  "/management/customer/{customerId}/delete":
+  "/customers/{customerId}/delete":
     delete:
       summary: delete customer by id
       operationId: DeleteCustomer
@@ -177,7 +177,7 @@ paths:
           schema:
             type: number
       tags:
-        - customer
+        - customers
       responses:
         "200":
           description: customer was deleted
