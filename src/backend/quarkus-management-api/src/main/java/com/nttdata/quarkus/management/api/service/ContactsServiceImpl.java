@@ -6,7 +6,6 @@ import io.quarkus.panache.common.Sort;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.WebApplicationException;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -31,6 +30,7 @@ public class ContactsServiceImpl implements ContactsService {
         //MAGIC TIME
         Contacts entity = contactsDao.findById(contact.getContactId());
 
+        entity.setCustomers(contact.getCustomers());
         entity.setLastName(contact.getLastName());
         entity.setFirstName(contact.getFirstName());
         entity.setPhone(contact.getPhone());
@@ -49,9 +49,9 @@ public class ContactsServiceImpl implements ContactsService {
     @Override
     public void deleteContact(BigInteger contactId) {
         Contacts entity = contactsDao.findById(contactId);
-        if (entity == null) {
-            throw new WebApplicationException("Contact does not exist.", 404);
-        }
+//        if (entity == null) {
+//            throw new WebApplicationException("Contact does not exist.", 404);
+//        }
         contactsDao.delete(entity);
     }
 

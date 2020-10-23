@@ -15,7 +15,6 @@ import java.math.BigInteger;
 )
 public class Contacts extends PanacheEntityBase implements java.io.Serializable {
 
-
      private BigInteger contactId;
      private Customers customers;
      private String firstName;
