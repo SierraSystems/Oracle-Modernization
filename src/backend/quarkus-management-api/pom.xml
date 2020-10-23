@@ -125,6 +125,10 @@
       <artifactId>jackson-datatype-joda</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.jboss.logmanager</groupId>
+      <artifactId>log4j2-jboss-logmanager</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct</artifactId>
       <version>1.4.1.Final</version>
