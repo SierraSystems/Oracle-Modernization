@@ -5,12 +5,13 @@ import { Button, Loader, Alert } from 'shared-components';
 import EditContact from '../edit-contact/EditContact';
 import Feedback from '../feedback/Feedback';
 import AddContact from '../add-contact/AddContact';
+import Customers from '../customers/Customers';
 import './Contacts.css';
 import SimpleModal from '../simple-modal/SimpleModal';
 
 const getContacts = (setContacts, setAlertMessage) => {
   axios
-    .get("/management/contacts")
+    .get("/contacts")
     .then((res) => {
       setContacts(res.data);
     })
@@ -20,9 +21,8 @@ const getContacts = (setContacts, setAlertMessage) => {
 };
 
 const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContacts) => {
-  console.log("Contact to delete is", contactToDelete);
   axios
-    .delete(`/management/contact/${contactToDelete.contactId}/delete`)
+    .delete(`/contacts/${contactToDelete.contactId}/delete`)
     .then((res) => {
       if (res.status === 200) {
         setShowModal(false);
@@ -37,6 +37,7 @@ const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContac
 
 export default function Contacts() {
   const [contacts, setContacts] = useState([]);
+  const [customerIdToShow, setCustomerIdToShow] = useState(null);
   const [contactToEdit, setContactToEdit] = useState(null);
   const [contactToDelete, setContactToDelete] = useState(null);
   const [addContact, setAddContact] = useState(false);
@@ -49,6 +50,7 @@ export default function Contacts() {
 
   if (contactToEdit) return <EditContact contact={contactToEdit} />
   if (addContact) return <AddContact />
+  if (customerIdToShow) return <Customers customerId={customerIdToShow} />
 
   const confirmButton = {
     label: "Delete contact",
@@ -105,7 +107,7 @@ export default function Contacts() {
                     <td>{contact.lastName}</td>
                     <td>{contact.email}</td>
                     <td>{contact.phoneNumber}</td>
-                    <td>{contact.customerId}</td>
+                    <td className="pointer" onClick={() => setCustomerIdToShow(contact.customerId)}>{contact.customerId}</td>
                     <td>
                       <div className="icon-spacing">
                         <MdModeEdit className="pointer" size={32} onClick={() => setContactToEdit(contact)} />

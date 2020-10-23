@@ -34,7 +34,7 @@ const generateInput = (id, label, value, setEditedContact, editedContact) => {
 
 const editContact = (editedContact, setShowContacts) => {
   axios
-    .put('/management/contact/update', editedContact)
+    .put('/contacts/update', editedContact)
     .then((res) => {
       if (res.status === 200) setShowContacts(true);
     })

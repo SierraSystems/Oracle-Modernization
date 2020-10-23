@@ -45,3 +45,11 @@ main {
   width: -moz-available;
   width: stretch;
 }
+
+.pad-it {
+  padding: 10px;
+}
+
+.limit-width {
+  width: 40%;
+}
