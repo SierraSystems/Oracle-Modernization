@@ -32,7 +32,7 @@ const generateInput = (id, label, setAddedContact, addedContact) => {
 
 const addNewContact = (addedContact, setShowContacts) => {
   axios
-    .post('/management/contact/add', addedContact)
+    .post('/contacts/add', addedContact)
     .then((res) => {
       if (res.status === 201) setShowContacts(true);
     })
