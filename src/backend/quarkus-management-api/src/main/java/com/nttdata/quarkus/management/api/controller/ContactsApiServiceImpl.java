@@ -49,7 +49,7 @@ public class ContactsApiServiceImpl implements ContactsApi {
 
         logger.info("Delete contact");
         contactsService.deleteContact(contactId.toBigInteger());
-        return Response.status(204).build();
+        return Response.ok().build();
 
     }
 
