@@ -7,5 +7,5 @@ import javax.inject.Singleton;
 import java.math.BigInteger;
 
 @Singleton
-public class CustomersDao implements PanacheRepositoryBase<Customers, BigInteger> {
+public class CustomersRepository implements PanacheRepositoryBase<Customers, BigInteger> {
 }

@@ -2,8 +2,6 @@ package com.nttdata.quarkus.management.api.model.database;
 // Generated Oct 20, 2020 7:29:03 AM by Hibernate Tools 6.0.0.Alpha2
 
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name="COUNTRIES"
 )
-public class Countries  extends PanacheEntityBase implements java.io.Serializable {
+public class Countries implements java.io.Serializable {
 
 
      private String countryId;
