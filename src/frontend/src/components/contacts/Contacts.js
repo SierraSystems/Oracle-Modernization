@@ -96,7 +96,7 @@ export default function Contacts() {
                   <th>Last Name</th>
                   <th>Email</th>
                   <th>Phone Number</th>
-                  <th>Customer ID</th>
+                  <th>Customer Name</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -107,7 +107,7 @@ export default function Contacts() {
                     <td>{contact.lastName}</td>
                     <td>{contact.email}</td>
                     <td>{contact.phoneNumber}</td>
-                    <td className="pointer" onClick={() => setCustomerIdToShow(contact.customerId)}>{contact.customerId}</td>
+                    <td className="pointer" onClick={() => setCustomerIdToShow(contact.customerId)}>{contact.customerName}</td>
                     <td>
                       <div className="icon-spacing">
                         <MdModeEdit className="pointer" size={32} onClick={() => setContactToEdit(contact)} />
