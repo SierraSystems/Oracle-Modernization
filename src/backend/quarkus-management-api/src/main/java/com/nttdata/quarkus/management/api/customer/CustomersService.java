@@ -1,7 +1,6 @@
-package com.nttdata.quarkus.management.api.service;
+package com.nttdata.quarkus.management.api.customer;
 
-import com.nttdata.quarkus.management.api.model.database.Contacts;
-import com.nttdata.quarkus.management.api.model.database.Customers;
+import com.nttdata.pocdata.hibernate.Customers;
 
 import java.math.BigInteger;
 import java.util.List;
