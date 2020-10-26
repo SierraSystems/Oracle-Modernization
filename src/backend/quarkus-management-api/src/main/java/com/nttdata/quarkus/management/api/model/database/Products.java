@@ -2,8 +2,6 @@ package com.nttdata.quarkus.management.api.model.database;
 // Generated Oct 20, 2020 7:29:03 AM by Hibernate Tools 6.0.0.Alpha2
 
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -16,7 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name="PRODUCTS"
 )
-public class Products  extends PanacheEntityBase implements java.io.Serializable {
+public class Products implements java.io.Serializable {
 
 
      private BigInteger productId;

@@ -6,15 +6,17 @@ info:
 servers:
   - url: "http://localhost:8080"
 tags:
-  - name: contact
+  - name: contacts
     description: Endpoints for contact data
+  - name: customers
+    description: Endpoints for customer data
 paths:
-  "/management/contact/update":
+  "/contacts/update":
     put:
       summary: Update
       operationId: Update Contact
       tags:
-        - contact
+        - contacts
       requestBody:
         content:
           application/json:
@@ -27,12 +29,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-  "/management/contact/add":
+  "/contacts/add":
     post:
       summary: Add
       operationId: Add Contact
       tags:
-        - contact
+        - contacts
       requestBody:
         content:
           application/json:
@@ -45,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-  "/management/contact/{contactId}":
+  "/contacts/{contactId}":
     get:
       summary: get a contact by id
       operationId: GetContact
@@ -56,7 +58,7 @@ paths:
           schema:
             type: number
       tags:
-        - contact
+        - contacts
       responses:
         "200":
           description: contact found
@@ -66,12 +68,12 @@ paths:
                 $ref: "#/components/schemas/Contact"
         "404":
           description: contact not found
-  "/management/contacts":
+  "/contacts":
     get:
       summary: get all contacts
       operationId: GetContacts
       tags:
-        - contact
+        - contacts
       responses:
         "200":
           description: get all contacts
@@ -79,7 +81,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contacts"
-  "/management/contact/{contactId}/delete":
+  "/contacts/{contactId}/delete":
     delete:
       summary: delete contact by id
       operationId: DeleteContact
@@ -90,10 +92,95 @@ paths:
           schema:
             type: number
       tags:
-        - contact
+        - contacts
       responses:
         "200":
           description: contact was deleted
+  "/customers/update":
+    put:
+      summary: Update
+      operationId: Update Customer
+      tags:
+        - customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        "200":
+          description: Customer was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+  "/customers/add":
+    post:
+      summary: Add
+      operationId: Add Customer
+      tags:
+        - customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        "201":
+          description: Customer was added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+  "/customers/{customerId}":
+    get:
+      summary: get a customer by id
+      operationId: GetCustomer
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: number
+      tags:
+        - customers
+      responses:
+        "200":
+          description: customer found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+        "404":
+          description: customer not found
+  "/customers":
+    get:
+      summary: get all customers
+      operationId: GetCustomers
+      tags:
+        - customers
+      responses:
+        "200":
+          description: get all customers
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customers"
+  "/customers/{customerId}/delete":
+    delete:
+      summary: delete customer by id
+      operationId: DeleteCustomer
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: number
+      tags:
+        - customers
+      responses:
+        "200":
+          description: customer was deleted
 components:
   schemas:
     Contact:
@@ -112,8 +199,29 @@ components:
           type: string
         customerId:
           type: number
+        customerName:
+          type: string
     Contacts:
       type: array
       description: Contacts
       items:
         $ref: "#/components/schemas/Contact"
+    Customer:
+      type: object
+      description: Customer
+      properties:
+        customerId:
+          type: number
+        fullName:
+          type: string
+        website:
+          type: string
+        address:
+          type: string
+        creditLimit:
+          type: number
+    Customers:
+      type: array
+      description: Customers
+      items:
+        $ref: "#/components/schemas/Customer"

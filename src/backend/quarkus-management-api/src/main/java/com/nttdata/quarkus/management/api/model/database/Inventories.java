@@ -2,8 +2,6 @@ package com.nttdata.quarkus.management.api.model.database;
 // Generated Oct 20, 2020 7:29:03 AM by Hibernate Tools 6.0.0.Alpha2
 
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
 import javax.persistence.*;
 
 /**
@@ -12,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="INVENTORIES"
 )
-public class Inventories  extends PanacheEntityBase implements java.io.Serializable {
+public class Inventories implements java.io.Serializable {
 
 
      private InventoriesId id;
