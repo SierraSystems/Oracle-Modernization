@@ -18,11 +18,14 @@ public interface ContactMapper {
 
     @Mapping(target = "customerId", source = "customers.customerId")
     @Mapping(target = "phoneNumber", source = "phone")
+    @Mapping(target = "customerName", source = "customers.name")
     Contact toContact(Contacts contacts);
 
     @Named("toCustomers")
     static Customers toCustomers(BigDecimal customerId) {
-        return Customers.findById(customerId.toBigInteger());
+        Customers customers = new Customers();
+        customers.setCustomerId(customerId.toBigInteger());
+        return customers;
     }
 
 }
