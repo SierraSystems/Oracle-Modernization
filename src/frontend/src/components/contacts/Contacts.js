@@ -22,7 +22,7 @@ const getContacts = (setContacts, setAlertMessage) => {
 
 const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContacts) => {
   axios
-    .delete(`/contacts/${contactToDelete.contactId}/delete`)
+    .delete(`/contacts/${contactToDelete.contactId}`)
     .then((res) => {
       if (res.status === 200) {
         setShowModal(false);
