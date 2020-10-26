@@ -1,4 +1,4 @@
-package com.nttdata.quarkus.management.api.dao;
+package com.nttdata.quarkus.management.api.contact;
 
 import com.nttdata.quarkus.management.api.model.database.Contacts;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;

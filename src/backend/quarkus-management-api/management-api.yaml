@@ -11,7 +11,19 @@ tags:
   - name: customers
     description: Endpoints for customer data
 paths:
-  "/contacts/update":
+  "/contacts":
+    get:
+      summary: get all contacts
+      operationId: GetContacts
+      tags:
+        - contacts
+      responses:
+        "200":
+          description: get all contacts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contacts"
     put:
       summary: Update
       operationId: Update Contact
@@ -29,7 +41,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-  "/contacts/add":
     post:
       summary: Add
       operationId: Add Contact
@@ -68,20 +79,6 @@ paths:
                 $ref: "#/components/schemas/Contact"
         "404":
           description: contact not found
-  "/contacts":
-    get:
-      summary: get all contacts
-      operationId: GetContacts
-      tags:
-        - contacts
-      responses:
-        "200":
-          description: get all contacts
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Contacts"
-  "/contacts/{contactId}/delete":
     delete:
       summary: delete contact by id
       operationId: DeleteContact

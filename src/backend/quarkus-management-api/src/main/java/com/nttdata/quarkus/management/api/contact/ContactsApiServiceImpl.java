@@ -1,10 +1,8 @@
-package com.nttdata.quarkus.management.api.controller;
+package com.nttdata.quarkus.management.api.contact;
 
-import com.nttdata.quarkus.management.api.contact.ContactMapper;
 import com.nttdata.quarkus.management.api.model.database.Contacts;
 import com.nttdata.quarkus.management.api.openapi.ContactsApi;
 import com.nttdata.quarkus.management.api.openapi.model.Contact;
-import com.nttdata.quarkus.management.api.service.ContactsService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;

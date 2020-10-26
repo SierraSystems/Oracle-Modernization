@@ -1,6 +1,5 @@
-package com.nttdata.quarkus.management.api.service;
+package com.nttdata.quarkus.management.api.contact;
 
-import com.nttdata.quarkus.management.api.dao.ContactsRepository;
 import com.nttdata.quarkus.management.api.model.database.Contacts;
 import io.quarkus.panache.common.Sort;
 
