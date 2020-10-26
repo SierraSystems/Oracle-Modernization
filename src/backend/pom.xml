@@ -5,14 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.nttdata</groupId>
-	<artifactId>justin-poc-backend</artifactId>
+	<artifactId>oracle-modernization-poc-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<description>Oracle Modernization API Backend for performing CRUD operations on an Oracle Database</description>
 
-	<name>justin-poc-backend</name>
+	<name>oracle-modernization-poc-backend</name>
 	<packaging>pom</packaging>
-	<url>https://github.com/SierraSystems/Justin-POC</url>
+	<url>https://github.com/SierraSystems/OracleModernization-POC</url>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -22,8 +22,7 @@
 		<profile>
 			<id>all</id>
 			<modules>
-				<module>libs/justin-data-starter</module>
-				<module>management-api</module>
+				<module>libs/oracle-data-starter</module>
 				<module>quarkus-management-api</module>
 			</modules>
 		</profile>
