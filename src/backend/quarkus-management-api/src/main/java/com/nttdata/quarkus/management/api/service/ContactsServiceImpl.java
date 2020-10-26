@@ -12,8 +12,14 @@ import java.util.List;
 @ApplicationScoped
 public class ContactsServiceImpl implements ContactsService {
 
+
+    private final ContactsRepository contactsRepository;
+
     @Inject
-    ContactsRepository contactsRepository;
+    public ContactsServiceImpl(ContactsRepository contactsRepository) {
+        this.contactsRepository = contactsRepository;
+    }
+
 
     @Override
     public List<Contacts> getContacts() {
@@ -27,15 +33,10 @@ public class ContactsServiceImpl implements ContactsService {
 
     @Override
     public Contacts updateContact(Contacts contact) {
-        //MAGIC TIME
-        Contacts entity = contactsRepository.findById(contact.getContactId());
 
-        entity.setLastName(contact.getLastName());
-        entity.setFirstName(contact.getFirstName());
-        entity.setPhone(contact.getPhone());
-        entity.setEmail(contact.getEmail());
+        this.contactsRepository.getEntityManager().merge(contact);
+        return contact;
 
-        return entity;
     }
 
     @Override

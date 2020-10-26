@@ -81,11 +81,11 @@ public class ContactsApiServiceImpl implements ContactsApi {
     public Response updateContact(@Valid Contact contact, SecurityContext securityContext) {
 
         logger.info("Update contact");
-        Contacts contactToUpdate = contactMapper.toContacts(contact);
-
-        return Response.ok(contactMapper.toContact(contactsService.updateContact(contactToUpdate))).status(200).build();
+        return Response.ok(
+                contactMapper.toContact(
+                        contactsService.updateContact(contactMapper.toContacts(contact))))
+                .status(200).build();
 
     }
-
 
 }
