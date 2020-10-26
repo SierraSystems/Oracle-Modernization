@@ -1,7 +1,6 @@
-package com.nttdata.quarkus.management.api.service;
+package com.nttdata.quarkus.management.api.customer;
 
-import com.nttdata.quarkus.management.api.dao.CustomersRepository;
-import com.nttdata.quarkus.management.api.model.database.Customers;
+import com.nttdata.pocdata.hibernate.Customers;
 import io.quarkus.panache.common.Sort;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -28,15 +27,9 @@ public class CustomersServiceImpl implements CustomersService {
     @Override
     public Customers updateCustomer(Customers customer) {
 
-        //DO YOU LIKE MAGIC!!!!!!
-        Customers entity = customersRepository.findById(customer.getCustomerId());
+        customersRepository.getEntityManager().merge(customer);
 
-        entity.setName(customer.getName());
-        entity.setAddress(customer.getAddress());
-        entity.setWebsite(customer.getWebsite());
-        entity.setCreditLimit(customer.getCreditLimit());
-
-        return entity;
+        return customer;
 
     }
 

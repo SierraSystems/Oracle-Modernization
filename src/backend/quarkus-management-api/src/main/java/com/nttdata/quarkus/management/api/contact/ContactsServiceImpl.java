@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.contact;
 
-import com.nttdata.quarkus.management.api.model.database.Contacts;
+import com.nttdata.pocdata.hibernate.Contacts;
 import io.quarkus.panache.common.Sort;
 
 import javax.enterprise.context.ApplicationScoped;
