@@ -1,7 +1,9 @@
 package com.nttdata.quarkus.management.api.service;
 
 import com.nttdata.quarkus.management.api.dao.ContactsRepository;
+import com.nttdata.quarkus.management.api.dao.CustomersRepository;
 import com.nttdata.quarkus.management.api.model.database.Contacts;
+import com.nttdata.quarkus.management.api.model.database.Customers;
 import io.quarkus.panache.common.Sort;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -14,6 +16,9 @@ public class ContactsServiceImpl implements ContactsService {
 
     @Inject
     ContactsRepository contactsRepository;
+
+    @Inject
+    CustomersRepository customersRepository;
 
     @Override
     public List<Contacts> getContacts() {
@@ -29,6 +34,10 @@ public class ContactsServiceImpl implements ContactsService {
     public Contacts updateContact(Contacts contact) {
         //MAGIC TIME
         Contacts entity = contactsRepository.findById(contact.getContactId());
+
+        Customers customers = customersRepository.findById(contact.getCustomers().getCustomerId());
+
+        entity.setCustomers(customers);
 
         entity.setLastName(contact.getLastName());
         entity.setFirstName(contact.getFirstName());
