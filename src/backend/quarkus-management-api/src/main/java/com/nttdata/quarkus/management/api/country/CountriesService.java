@@ -1,17 +1,15 @@
 package com.nttdata.quarkus.management.api.country;
 
-import com.nttdata.pocdata.hibernate.Countries;
-
 import java.util.List;
 
 public interface CountriesService {
-    List<Countries> getCountries();
+    List<CountriesCache> getCountries();
 
-    Countries getCountry(String countryId);
+    CountriesCache getCountry(String countryId);
 
-    Countries updateCountry(Countries countries);
+    CountriesCache updateCountry(CountriesCache countries);
 
-    Countries addCountry(Countries countries);
+    CountriesCache addCountry(CountriesCache countries);
 
     void deleteCountry(String countryId);
 }
