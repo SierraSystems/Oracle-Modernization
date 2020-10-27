@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.location;
 
-import com.nttdata.pocdata.hibernate.Locations;
+import com.nttdata.quarkus.management.api.model.database.Locations;
 
 import javax.inject.Inject;
 import java.math.BigInteger;

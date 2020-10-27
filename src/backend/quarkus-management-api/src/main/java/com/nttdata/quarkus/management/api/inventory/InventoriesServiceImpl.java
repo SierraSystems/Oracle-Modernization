@@ -1,9 +1,6 @@
 package com.nttdata.quarkus.management.api.inventory;
 
-import com.nttdata.pocdata.hibernate.Employees;
-import com.nttdata.pocdata.hibernate.Inventories;
-import io.quarkus.panache.common.Sort;
-
+import com.nttdata.quarkus.management.api.model.database.Inventories;
 import javax.inject.Inject;
 import java.math.BigInteger;
 import java.util.List;

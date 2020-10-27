@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.warehouse;
 
-import com.nttdata.pocdata.hibernate.Warehouses;
+import com.nttdata.quarkus.management.api.model.database.Warehouses;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import javax.inject.Singleton;

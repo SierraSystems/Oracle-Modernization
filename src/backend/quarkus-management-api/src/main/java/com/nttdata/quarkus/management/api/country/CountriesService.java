@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.country;
 
-import com.nttdata.pocdata.hibernate.Countries;
+import com.nttdata.quarkus.management.api.model.database.Countries;
 
 import java.util.List;
 

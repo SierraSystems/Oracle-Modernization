@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.warehouse;
 
-import com.nttdata.pocdata.hibernate.Warehouses;
+import com.nttdata.quarkus.management.api.model.database.Warehouses;
 
 import java.math.BigInteger;
 import java.util.List;

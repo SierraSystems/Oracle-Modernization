@@ -1,11 +1,12 @@
 package com.nttdata.quarkus.management.api.country;
 
-import com.nttdata.pocdata.hibernate.Countries;
-import io.quarkus.panache.common.Sort;
+import com.nttdata.quarkus.management.api.model.database.Countries;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
 
+@ApplicationScoped
 public class CountriesServiceImpl implements CountriesService {
 
     private final CountriesRepository countriesRepository;
@@ -17,7 +18,7 @@ public class CountriesServiceImpl implements CountriesService {
 
     @Override
     public List<Countries> getCountries() {
-        return countriesRepository.listAll(Sort.ascending("COUNTRY_NAME"));
+        return countriesRepository.loadWithRegions();
     }
 
     @Override

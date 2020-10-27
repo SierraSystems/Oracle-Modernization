@@ -178,6 +178,91 @@ paths:
       responses:
         "200":
           description: customer was deleted
+  "/countries/update":
+    put:
+      summary: Update
+      operationId: Update Country
+      tags:
+        - countries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Country"
+      responses:
+        "200":
+          description: Country was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Country"
+  "/countries/add":
+    post:
+      summary: Add
+      operationId: Add Country
+      tags:
+        - countries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Country"
+      responses:
+        "201":
+          description: Country was added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Country"
+  "/countries/{countryId}":
+    get:
+      summary: get a country by id
+      operationId: GetCountry
+      parameters:
+        - in: path
+          name: countryId
+          required: true
+          schema:
+            type: string
+      tags:
+        - countries
+      responses:
+        "200":
+          description: country found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Country"
+        "404":
+          description: contact not found
+  "/countries":
+    get:
+      summary: get all countries
+      operationId: GetCountries
+      tags:
+        - countries
+      responses:
+        "200":
+          description: get all Countries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Countries"
+  "/countries/{countryId}/delete":
+    delete:
+      summary: delete country by id
+      operationId: DeleteCountry
+      parameters:
+        - in: path
+          name: countryId
+          required: true
+          schema:
+            type: string
+      tags:
+        - countries
+      responses:
+        "200":
+          description: contact was deleted
 components:
   schemas:
     Contact:
@@ -222,3 +307,18 @@ components:
       description: Customers
       items:
         $ref: "#/components/schemas/Customer"
+    Country:
+      type: object
+      description: Country
+      properties:
+        countryId:
+          type: string
+        countryName:
+          type: string
+        regionId:
+          type: number
+    Countries:
+      type: array
+      description: Countries
+      items:
+        $ref: "#/components/schemas/Country"

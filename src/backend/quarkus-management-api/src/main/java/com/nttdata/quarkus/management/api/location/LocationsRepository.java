@@ -1,7 +1,6 @@
 package com.nttdata.quarkus.management.api.location;
 
-import com.nttdata.pocdata.hibernate.Contacts;
-import com.nttdata.pocdata.hibernate.Locations;
+import com.nttdata.quarkus.management.api.model.database.Locations;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import java.math.BigInteger;

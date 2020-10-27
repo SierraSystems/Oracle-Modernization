@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.contact;
 
-import com.nttdata.pocdata.hibernate.Contacts;
+import com.nttdata.quarkus.management.api.model.database.Contacts;
 
 import java.math.BigInteger;
 import java.util.List;

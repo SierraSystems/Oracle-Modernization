@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.product;
 
-import com.nttdata.pocdata.hibernate.Products;
+import com.nttdata.quarkus.management.api.model.database.Products;
 
 import java.math.BigInteger;
 import java.util.List;
