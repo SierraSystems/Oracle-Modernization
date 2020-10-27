@@ -17,13 +17,26 @@ paths:
       operationId: GetContacts
       tags:
         - contacts
+      parameters:
+        - in: query
+          name: cursor
+          schema:
+            type: string
+          required: false
+          description: The next cursor
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          required: false
+          description: The record limit
       responses:
         "200":
           description: get all contacts
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contacts"
+                $ref: "#/components/schemas/ContactResponse"
     put:
       summary: Update
       operationId: Update Contact
@@ -198,11 +211,19 @@ components:
           type: number
         customerName:
           type: string
-    Contacts:
-      type: array
-      description: Contacts
-      items:
-        $ref: "#/components/schemas/Contact"
+    ContactResponse:
+      type: object
+      description: A list of contacts and metadata
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Contact"
+        response_metadata:
+          type: object
+          properties:
+            nextCursor:
+              type: string
     Customer:
       type: object
       description: Customer

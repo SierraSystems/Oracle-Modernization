@@ -1,12 +1,12 @@
 package com.nttdata.quarkus.management.api.contact;
 
-import com.nttdata.pocdata.hibernate.Contacts;
+import com.nttdata.quarkus.management.api.model.database.Contacts;
+import com.nttdata.quarkus.management.api.queryUtils.CursorResultSet;
 import io.quarkus.panache.common.Sort;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.math.BigInteger;
-import java.util.List;
 
 @ApplicationScoped
 public class ContactsServiceImpl implements ContactsService {
@@ -21,8 +21,8 @@ public class ContactsServiceImpl implements ContactsService {
 
 
     @Override
-    public List<Contacts> getContacts() {
-        return contactsRepository.loadWithCustomer();
+    public CursorResultSet<Contacts> getContacts(String fromId, int limit) {
+        return contactsRepository.loadWithCustomer(fromId, limit);
     }
 
     @Override

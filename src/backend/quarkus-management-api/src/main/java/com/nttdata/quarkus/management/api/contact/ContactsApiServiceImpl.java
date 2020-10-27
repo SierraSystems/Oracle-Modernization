@@ -3,6 +3,10 @@ package com.nttdata.quarkus.management.api.contact;
 import com.nttdata.pocdata.hibernate.Contacts;
 import com.nttdata.quarkus.management.api.openapi.ContactsApi;
 import com.nttdata.quarkus.management.api.openapi.model.Contact;
+import com.nttdata.quarkus.management.api.openapi.model.ContactResponse;
+import com.nttdata.quarkus.management.api.openapi.model.ContactResponseResponseMetadata;
+import com.nttdata.quarkus.management.api.queryUtils.CursorResultSet;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -10,6 +14,8 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import java.math.BigDecimal;
+import java.text.MessageFormat;
+import java.util.Base64;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -62,15 +68,37 @@ public class ContactsApiServiceImpl implements ContactsApi {
 
     @Override
     @Transactional
-    public Response getContacts(SecurityContext securityContext) {
+    public Response getContacts(String cursor, Integer limit, SecurityContext securityContext) {
+
+        if(limit == null || limit >= 100) limit = 100;
+
+        String fromId = "";
+
+        if(!StringUtils.isBlank(cursor)) {
+            byte[] decodedBytes = Base64.getDecoder().decode(cursor);
+            String decodedString = new String(decodedBytes);
+            fromId = decodedString.split(":")[1];
+        }
+
+
+        CursorResultSet<Contacts> resultSet = contactsService.getContacts(fromId, limit);
+
+        ContactResponse response = new ContactResponse();
+        response.setItems(resultSet.getItems()
+                .stream()
+                .map(contacts -> contactMapper.toContact(contacts))
+                .collect(Collectors.toList()));
+
+        ContactResponseResponseMetadata metadata = new ContactResponseResponseMetadata();
+
+        if(!StringUtils.isBlank(resultSet.getNextCursor())) {
+            metadata.setNextCursor(Base64.getEncoder().encodeToString(MessageFormat.format("user:{0}",resultSet.getNextCursor()).getBytes()));
+            response.setResponseMetadata(metadata);
+        }
+
 
         logger.info("Add contacts");
-        return Response.ok(
-                contactsService
-                        .getContacts()
-                        .stream()
-                        .map(contacts -> contactMapper.toContact(contacts))
-                        .collect(Collectors.toList())).build();
+        return Response.ok(response).build();
 
     }
 
