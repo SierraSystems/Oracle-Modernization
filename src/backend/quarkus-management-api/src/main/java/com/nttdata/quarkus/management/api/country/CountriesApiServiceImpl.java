@@ -1,9 +1,7 @@
 package com.nttdata.quarkus.management.api.country;
 
-import com.nttdata.pocdata.hibernate.Contacts;
-
+import com.nttdata.quarkus.management.api.model.database.Countries;
 import com.nttdata.quarkus.management.api.openapi.CountriesApi;
-import com.nttdata.quarkus.management.api.openapi.model.Contact;
 import com.nttdata.quarkus.management.api.openapi.model.Country;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -12,7 +10,6 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
-import java.math.BigDecimal;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -39,7 +36,7 @@ public class CountriesApiServiceImpl implements CountriesApi {
 
         logger.info("Add country");
 
-        CountriesCache countryToAdd = countryMapper.toCountries(country);
+        Countries countryToAdd = countryMapper.toCountries(country);
 
         return Response.ok(countryMapper.toCountry(countriesService.addCountry(countryToAdd))).status(201).build();
 

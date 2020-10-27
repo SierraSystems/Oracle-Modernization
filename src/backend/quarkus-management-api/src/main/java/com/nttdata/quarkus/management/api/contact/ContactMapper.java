@@ -1,7 +1,7 @@
 package com.nttdata.quarkus.management.api.contact;
 
-import com.nttdata.pocdata.hibernate.Contacts;
-import com.nttdata.pocdata.hibernate.Customers;
+import com.nttdata.quarkus.management.api.model.database.Contacts;
+import com.nttdata.quarkus.management.api.model.database.Customers;
 import com.nttdata.quarkus.management.api.openapi.model.Contact;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

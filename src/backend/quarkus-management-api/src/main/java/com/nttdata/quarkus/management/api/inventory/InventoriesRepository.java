@@ -1,7 +1,6 @@
 package com.nttdata.quarkus.management.api.inventory;
 
-import com.nttdata.pocdata.hibernate.Contacts;
-import com.nttdata.pocdata.hibernate.Inventories;
+import com.nttdata.quarkus.management.api.model.database.Inventories;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import java.math.BigInteger;

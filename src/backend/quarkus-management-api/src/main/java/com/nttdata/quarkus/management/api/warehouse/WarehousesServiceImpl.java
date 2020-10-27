@@ -1,7 +1,6 @@
 package com.nttdata.quarkus.management.api.warehouse;
 
-import com.nttdata.pocdata.hibernate.Countries;
-import com.nttdata.pocdata.hibernate.Warehouses;
+import com.nttdata.quarkus.management.api.model.database.Warehouses;
 import io.quarkus.panache.common.Sort;
 
 import javax.inject.Inject;

@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.employee;
 
-import com.nttdata.pocdata.hibernate.Employees;
+import com.nttdata.quarkus.management.api.model.database.Employees;
 
 import java.math.BigInteger;
 import java.util.List;

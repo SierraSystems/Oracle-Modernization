@@ -1,6 +1,7 @@
 package com.nttdata.quarkus.management.api.country;
 
-import com.nttdata.pocdata.hibernate.Regions;
+import com.nttdata.quarkus.management.api.model.database.Countries;
+import com.nttdata.quarkus.management.api.model.database.Regions;
 import com.nttdata.quarkus.management.api.openapi.model.Country;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,10 +13,10 @@ import java.math.BigDecimal;
 public interface CountryMapper {
 
     @Mapping(target = "regions", source = "regionId", qualifiedByName = "toRegions")
-    CountriesCache toCountries(Country country);
+    Countries toCountries(Country country);
 
     @Mapping(target = "regionId", source = "regions.regionId")
-    Country toCountry(CountriesCache countries);
+    Country toCountry(Countries countries);
 
     @Named("toRegions")
     static Regions toRegions(BigDecimal regionId) {

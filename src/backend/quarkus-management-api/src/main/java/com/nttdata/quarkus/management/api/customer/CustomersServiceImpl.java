@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.customer;
 
-import com.nttdata.pocdata.hibernate.Customers;
+import com.nttdata.quarkus.management.api.model.database.Customers;
 import io.quarkus.panache.common.Sort;
 
 import javax.enterprise.context.ApplicationScoped;

@@ -1,6 +1,6 @@
 package com.nttdata.quarkus.management.api.country;
 
-import io.quarkus.panache.common.Sort;
+import com.nttdata.quarkus.management.api.model.database.Countries;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -17,23 +17,23 @@ public class CountriesServiceImpl implements CountriesService {
     }
 
     @Override
-    public List<CountriesCache> getCountries() {
-        return countriesRepository.findAll(Sort.ascending("COUNTRY_NAME")).list();
+    public List<Countries> getCountries() {
+        return countriesRepository.loadWithRegions();
     }
 
     @Override
-    public CountriesCache getCountry(String countryId) {
+    public Countries getCountry(String countryId) {
         return countriesRepository.findById(countryId);
     }
 
     @Override
-    public CountriesCache updateCountry(CountriesCache countries) {
+    public Countries updateCountry(Countries countries) {
         this.countriesRepository.getEntityManager().merge(countries);
         return countries;
     }
 
     @Override
-    public CountriesCache addCountry(CountriesCache countries) {
+    public Countries addCountry(Countries countries) {
         countriesRepository.persist(countries);
         return countries;
     }
