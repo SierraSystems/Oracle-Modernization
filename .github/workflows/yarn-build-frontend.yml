@@ -17,5 +17,5 @@ jobs:
         run: yarn --cwd src/frontend install
         
       # Run Yarn Build- Oracle Modernization Frontend
-      - name: Run Yarn Install - Oracle Modernization Frontend
+      - name: Run Yarn Build - Oracle Modernization Frontend
         run: yarn --cwd src/frontend build
