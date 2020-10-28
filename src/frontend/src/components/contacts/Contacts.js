@@ -42,7 +42,7 @@ const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContac
 
 const loadMoreContact = (nextCursor, setContacts, setNextCursor, setAlertMessage) => {
 
-  if(nextCursor !== "") {
+  if (nextCursor !== "") {
     axios
       .get("/contacts?fromcursor=" + nextCursor)
       .then((res) => {
