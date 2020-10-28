@@ -45,12 +45,12 @@ const loadMoreContact = (nextCursor, setContacts, setNextCursor, setAlertMessage
   if (nextCursor !== "") {
     axios
       .get(`/contacts?fromcursor=${nextCursor}`)
-      .then((res) => {
-        setContacts(contacts => contacts.concat(res.data.items));
-        if(res.data.metadata) {
-          setNextCursor(res.data.metadata.nextCursor)
+      .then(({ data: { items, metadata } }) => {
+        setContacts(contacts => contacts.concat(items));
+        if (metadata) {
+          setNextCursor(metadata.nextCursor);
         } else {
-          setNextCursor("")
+          setNextCursor("");
         }
       })
       .catch(() => {
