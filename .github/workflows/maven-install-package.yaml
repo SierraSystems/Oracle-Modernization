@@ -22,4 +22,4 @@ jobs:
       - name: Run wmvn package - Oracle Modernization Quarkus Backend
         run: |
           cd ./src/backend/quarkus-management-api
-          ./wmvn package
+          ./mvnw package
