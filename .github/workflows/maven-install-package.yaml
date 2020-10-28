@@ -12,14 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      # Run mvn install - Oracle Modernization Quarkus Backend
-      - name: Run mvn install - Oracle Modernization Quarkus Backend
+      # Run Maven Verify to generate all jacoco reports
+      - name: Build with Maven
         run: |
-          cd ./src/backend/quarkus-management-api
-          mvn install
+          mvn -B verify -P all --file src/backend//quarkus-management-api/pom.xml
 
       # Run wmvn package - Oracle Modernization Quarkus Backend
       - name: Run wmvn package - Oracle Modernization Quarkus Backend
         run: |
-          cd ./src/backend/quarkus-management-api
-          ./mvnw package
+          mvnw package --file src/backend//quarkus-management-api/pom.xml
