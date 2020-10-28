@@ -13,7 +13,7 @@ const getContacts = (setContacts, setAlertMessage) => {
   axios
     .get("/contacts")
     .then((res) => {
-      setContacts(res.data);
+      setContacts(res.data.items);
     })
     .catch(() => {
       setAlertMessage('Error getting contacts');
