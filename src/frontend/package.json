@@ -26,7 +26,6 @@
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.10.2",
     "react-icons": "^3.11.0",
-    "react-scripts": "4.0.0",
     "shared-components": "https://github.com/bcgov/react-shared-components/releases/download/0.5.9/shared-components-0.5.9.tgz"
   },
   "scripts": {
@@ -58,6 +57,7 @@
     "electron-builder": "^22.9.1",
     "electron-is-dev": "^1.1.0",
     "electron-reload": "^1.5.0",
-    "nodemon": "^2.0.5"
+    "nodemon": "^2.0.5",
+    "react-scripts": "3.4.3"
   }
 }
