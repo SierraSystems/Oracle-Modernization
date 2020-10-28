@@ -1,0 +1,23 @@
+name: Install and Package Quarkus API
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  maven:
+
+    name: Make sure Quarkus API installs and builds package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      # Run mvn install - Oracle Modernization Quarkus Backend
+      - name: Run mvn install - Oracle Modernization Quarkus Backend
+        run: mvn install
+
+      # Run wmvn package - Oracle Modernization Quarkus Backend
+      - name: Run wmvn package - Oracle Modernization Quarkus Backend
+        run: |
+          cd ./src/backend/quarkus-management-api
+          ./wmvn package
