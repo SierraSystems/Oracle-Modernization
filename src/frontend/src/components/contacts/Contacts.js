@@ -9,11 +9,14 @@ import Customers from '../customers/Customers';
 import './Contacts.css';
 import SimpleModal from '../simple-modal/SimpleModal';
 
-const getContacts = (setContacts, setAlertMessage) => {
+const getContacts = (setContacts, setAlertMessage, setNextCursor) => {
   axios
     .get("/contacts")
     .then((res) => {
       setContacts(res.data.items);
+      if(res.data.metadata) {
+        setNextCursor(res.data.metadata.nextCursor);
+      }
     })
     .catch(() => {
       setAlertMessage('Error getting contacts');
@@ -35,8 +38,29 @@ const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContac
     })
 };
 
+const loadMoreContact = (nextCursor, setContacts, setNextCursor, setAlertMessage) => {
+
+  if(nextCursor !== "") {
+    axios
+      .get("/contacts?fromcursor=" + nextCursor)
+      .then((res) => {
+        setContacts(contacts => contacts.concat(res.data.items));
+        if(res.data.metadata) {
+          setNextCursor(res.data.metadata.nextCursor)
+        } else {
+          setNextCursor("")
+        }
+      })
+      .catch(() => {
+        setAlertMessage('Error getting contacts');
+      });
+  }
+
+}
+
 export default function Contacts() {
   const [contacts, setContacts] = useState([]);
+  const [nextCursor, setNextCursor] = useState("more");
   const [customerIdToShow, setCustomerIdToShow] = useState(null);
   const [contactToEdit, setContactToEdit] = useState(null);
   const [contactToDelete, setContactToDelete] = useState(null);
@@ -45,7 +69,7 @@ export default function Contacts() {
   const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
-    getContacts(setContacts, setAlertMessage);
+    getContacts(setContacts, setAlertMessage, setNextCursor);
   }, []);
 
   if (contactToEdit) return <EditContact contact={contactToEdit} />
@@ -133,6 +157,10 @@ export default function Contacts() {
             </table>
           )}
         </>
+      )}
+      <br />
+      { nextCursor !== "" && (
+        <Button onClick={() => loadMoreContact(nextCursor, setContacts, setNextCursor, setAlertMessage)} label="Load more contacts" styling="normal-blue btn" />
       )}
       <br />
       <br />
