@@ -49,7 +49,7 @@ export default function Customers({ customerId }) {
               <Button
                 onClick={() => window.open(customerInfo.website)}
                 label="Visit Website"
-                styling="normal-blue btn"
+                styling="bcgov-normal-blue btn"
               />
             </div>
           </Card>
@@ -62,7 +62,7 @@ export default function Customers({ customerId }) {
 
       {alertMessage && (
         <>
-          <Alert icon={<MdCancel size={32} />} type="error" styling="error-background" element={alertMessage} />
+          <Alert icon={<MdCancel size={32} />} type="error" styling="bcgov-error-background" element={alertMessage} />
           <br />
         </>
       )}
@@ -71,7 +71,7 @@ export default function Customers({ customerId }) {
       <section className="buttons pt-2">
         <Button
           label="Cancel"
-          styling="normal-white btn"
+          styling="bcgov-normal-white btn"
           onClick={() => setShowContacts(true)}
         />
       </section>

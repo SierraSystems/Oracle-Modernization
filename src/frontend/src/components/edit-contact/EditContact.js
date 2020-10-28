@@ -17,7 +17,7 @@ const generateInput = (id, label, value, setEditedContact, editedContact) => {
           ...input,
           id,
           label,
-          styling: "editable-white",
+          styling: "bcgov-editable-white",
           value
         }}
         onChange={(val) => {
@@ -63,12 +63,12 @@ export default function EditContact({ contact }) {
       <section className="buttons pt-2">
         <Button
           label="Edit Contact"
-          styling="normal-blue btn space-right"
+          styling="bcgov-normal-blue btn space-right"
           onClick={() => editContact(editedContact, setShowContacts)}
         />
         <Button
           label="Cancel"
-          styling="normal-white btn"
+          styling="bcgov-normal-white btn"
           onClick={() => setShowContacts(true)}
         />
       </section>
