@@ -29,7 +29,7 @@ export default function Home() {
           <Contacts />
         </div>
       </div>
-      <Footer className="footer" />
+      <Footer className="bcgov-footer" />
     </main>
   );
 }

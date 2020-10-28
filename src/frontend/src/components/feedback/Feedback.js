@@ -15,12 +15,12 @@ export default function Feedback() {
         <div className="flexed">
           <Button
             label="Documentation"
-            styling="normal-white btn space-right"
+            styling="bcgov-normal-white btn space-right"
             onClick={() => openLink("https://github.com/SierraSystems/Oracle-Modernization")}
           />
           <Button
             label="The Product"
-            styling="normal-white btn"
+            styling="bcgov-normal-white btn"
             onClick={() => openLink("https://github.com/SierraSystems/Oracle-Modernization/issues/new/choose")}
           />
         </div>

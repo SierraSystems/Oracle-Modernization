@@ -41,23 +41,18 @@ const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContac
 };
 
 const loadMoreContacts = (nextCursor, setContacts, setNextCursor, setAlertMessage) => {
+  if (!nextCursor) return;
 
-  if (nextCursor !== "") {
-    axios
-      .get(`/contacts?fromcursor=${nextCursor}`)
-      .then(({ data: { items, metadata } }) => {
-        setContacts(contacts => contacts.concat(items));
-        if (metadata) {
-          setNextCursor(metadata.nextCursor);
-        } else {
-          setNextCursor("");
-        }
-      })
-      .catch(() => {
-        setAlertMessage('Error getting contacts');
-      });
-  }
-
+  axios
+    .get(`/contacts?fromcursor=${nextCursor}`)
+    .then(({ data: { items, metadata } }) => {
+      setContacts(contacts => contacts.concat(items));
+      if (metadata) setNextCursor(metadata.nextCursor);
+      else setNextCursor("");
+    })
+    .catch(() => {
+      setAlertMessage('Error getting contacts');
+    });
 }
 
 export default function Contacts() {
@@ -80,13 +75,13 @@ export default function Contacts() {
 
   const confirmButton = {
     label: "Delete contact",
-    styling: "normal-blue btn consistent-width",
+    styling: "bcgov-normal-blue btn bcgov-consistent-width",
     onClick: () => deleteContact(contactToDelete, setShowModal, setAlertMessage, setContacts)
   };
 
   const cancelButton = {
     label: "No thank you",
-    styling: "normal-white btn consistent-width",
+    styling: "bcgov-normal-white btn bcgov-consistent-width",
     onClick: () => setShowModal(false)
   };
 
@@ -94,19 +89,19 @@ export default function Contacts() {
     <>
       {alertMessage === "Error getting contacts" && (
         <>
-          <Alert icon={<MdCancel size={32} />} type="error" styling="error-background" element={alertMessage} />
+          <Alert icon={<MdCancel size={32} />} type="error" styling="bcgov-error-background" element={alertMessage} />
           <br />
         </>
       )}
       {alertMessage === "Error deleting contact" && (
         <>
-          <Alert icon={<MdCancel size={32} />} type="error" styling="error-background" element={alertMessage} />
+          <Alert icon={<MdCancel size={32} />} type="error" styling="bcgov-error-background" element={alertMessage} />
           <br />
         </>
       )}
       {alertMessage === "Successfully deleted contact" && (
         <>
-          <Alert icon={<MdCheckBox size={32} />} type="success" styling="success-background" element={alertMessage} />
+          <Alert icon={<MdCheckBox size={32} />} type="success" styling="bcgov-success-background" element={alertMessage} />
           <br />
         </>
       )}
@@ -114,7 +109,7 @@ export default function Contacts() {
         <>
           <div className="heading-spacing">
             <h2 className="v-centerify">Contacts</h2>
-            <Button label="Add New Contact" styling="normal-blue btn" onClick={() => setAddContact(true)} />
+            <Button label="Add New Contact" styling="bcgov-normal-blue btn" onClick={() => setAddContact(true)} />
           </div>
           <br />
           {contacts.length === 0 && (
@@ -162,7 +157,7 @@ export default function Contacts() {
       )}
       <br />
       {nextCursor !== "" && (
-        <Button onClick={() => loadMoreContacts(nextCursor, setContacts, setNextCursor, setAlertMessage)} label="Load more contacts" styling="normal-blue btn" />
+        <Button onClick={() => loadMoreContacts(nextCursor, setContacts, setNextCursor, setAlertMessage)} label="Load more contacts" styling="bcgov-normal-blue btn" />
       )}
       <br />
       <br />
