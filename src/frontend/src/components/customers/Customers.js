@@ -22,11 +22,10 @@ export default function Customers({ customerId }) {
   const [alertMessage, setAlertMessage] = useState("");
   const [showContacts, setShowContacts] = useState(false);
   const [imageAvatarUrl, setImageAvatarUrl] = useState("");
-  const userIcon = `${process.env.PUBLIC_URL}/images/user.png`;
 
   useEffect(() => {
     getCustomerInfo(customerId, setCustomerInfo, setAlertMessage, setImageAvatarUrl);
-  }, []);
+  }, [customerId]);
 
   if (showContacts) return <Contacts />
 
@@ -37,7 +36,7 @@ export default function Customers({ customerId }) {
       {customerInfo && (
         <div className="limit-width">
           <Card style={{ padding: '10px' }}>
-            <img style={{ padding: 'inherit' }} src={imageAvatarUrl} width="80" height="80"/>
+            <img style={{ padding: 'inherit' }} src={imageAvatarUrl} alt="avatar" width="80" height="80"/>
             <div className="pad-it">
               <h3>{customerInfo.fullName}</h3>
               <br />
