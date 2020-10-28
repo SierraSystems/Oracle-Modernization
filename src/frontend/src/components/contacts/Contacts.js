@@ -161,8 +161,8 @@ export default function Contacts() {
         </>
       )}
       <br />
-      { nextCursor !== "" && (
-        <Button onClick={() => loadMoreContact(nextCursor, setContacts, setNextCursor, setAlertMessage)} label="Load more contacts" styling="normal-blue btn" />
+      {nextCursor !== "" && (
+        <Button onClick={() => loadMoreContacts(nextCursor, setContacts, setNextCursor, setAlertMessage)} label="Load more contacts" styling="normal-blue btn" />
       )}
       <br />
       <br />
