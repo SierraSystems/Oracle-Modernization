@@ -17,13 +17,16 @@ paths:
       operationId: GetContacts
       tags:
         - contacts
+      parameters:
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/fromCursorParam"
       responses:
         "200":
           description: get all contacts
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contacts"
+                $ref: "#/components/schemas/ContactList"
     put:
       summary: Update
       operationId: Update Contact
@@ -264,7 +267,32 @@ paths:
         "200":
           description: contact was deleted
 components:
+  parameters:
+    limitParam:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      description: The numbers of items to return.
+    fromCursorParam:
+      in: query
+      name: fromcursor
+      required: false
+      schema:
+        type: string
+      description: The cursor from where to return results
   schemas:
+    ListMetadata:
+      type: object
+      description: list metadata
+      properties:
+        nextCursor:
+          type: string
+          description: the next cursor
     Contact:
       type: object
       description: Contact
@@ -283,11 +311,16 @@ components:
           type: number
         customerName:
           type: string
-    Contacts:
-      type: array
-      description: Contacts
-      items:
-        $ref: "#/components/schemas/Contact"
+    ContactList:
+      type: object
+      properties:
+        items:
+          type: array
+          description: Contacts
+          items:
+            $ref: "#/components/schemas/Contact"
+        metadata:
+          $ref: "#/components/schemas/ListMetadata"
     Customer:
       type: object
       description: Customer

@@ -1,13 +1,14 @@
 package com.nttdata.quarkus.management.api.contact;
 
 import com.nttdata.quarkus.management.api.model.database.Contacts;
+import com.nttdata.quarkus.management.api.openapi.model.ContactList;
 
 import java.math.BigInteger;
-import java.util.List;
 
 
 public interface ContactsService {
-    List<Contacts> getContacts();
+
+    ContactList getContacts(String fromCursor, int limit);
 
     Contacts getContact(BigInteger contactId);
 
