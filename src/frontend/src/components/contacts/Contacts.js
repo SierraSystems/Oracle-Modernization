@@ -16,6 +16,8 @@ const getContacts = (setContacts, setAlertMessage, setNextCursor) => {
       setContacts(res.data.items);
       if(res.data.metadata) {
         setNextCursor(res.data.metadata.nextCursor);
+      } else {
+        setNextCursor("")
       }
     })
     .catch(() => {
