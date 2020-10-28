@@ -1,0 +1,21 @@
+name: Install and Build Frontend
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  yarn:
+
+    name: Make sure frontend installs and builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Run Yarn Install - Oracle Modernization Frontend
+      - name: Run Yarn Install - Oracle Modernization Frontend
+        run: yarn --cwd src/frontend install
+        
+      # Run Yarn Install - Oracle Modernization Frontend
+      - name: Run Yarn Install - Oracle Modernization Frontend
+        run: yarn --cwd src/frontend build
