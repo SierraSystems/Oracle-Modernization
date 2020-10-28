@@ -12,12 +12,12 @@ import SimpleModal from '../simple-modal/SimpleModal';
 const getContacts = (setContacts, setAlertMessage, setNextCursor) => {
   axios
     .get("/contacts")
-    .then((res) => {
-      setContacts(res.data.items);
-      if(res.data.metadata) {
-        setNextCursor(res.data.metadata.nextCursor);
+    .then(({ data: { items, metadata } }) => {
+      setContacts(items);
+      if (metadata) {
+        setNextCursor(metadata.nextCursor);
       } else {
-        setNextCursor("")
+        setNextCursor("");
       }
     })
     .catch(() => {
