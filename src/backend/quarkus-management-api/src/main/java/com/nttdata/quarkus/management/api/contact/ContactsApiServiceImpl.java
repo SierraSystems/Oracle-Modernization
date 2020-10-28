@@ -7,11 +7,12 @@ import com.nttdata.quarkus.management.api.openapi.model.Contact;
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import java.math.BigDecimal;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 
 
@@ -61,16 +62,12 @@ public class ContactsApiServiceImpl implements ContactsApi {
     }
 
     @Override
-    @Transactional
-    public Response getContacts(SecurityContext securityContext) {
+    public Response getContacts(@Min(1) @Max(100) Integer limit, String fromcursor, SecurityContext securityContext) {
+
 
         logger.info("Add contacts");
         return Response.ok(
-                contactsService
-                        .getContacts()
-                        .stream()
-                        .map(contacts -> contactMapper.toContact(contacts))
-                        .collect(Collectors.toList())).build();
+                contactsService.getContacts(fromcursor, limit)).build();
 
     }
 
