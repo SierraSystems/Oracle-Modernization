@@ -116,49 +116,52 @@ export default function Contacts() {
             <Loader page />
           )}
           {contacts.length > 0 && (
-            <table className="table table-hover table-bordered table-sm">
-              <thead>
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
-                  <th>Customer Name</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              {contacts.map(contact => (
-                <tbody>
-                  <tr key={contact.contactId}>
-                    <td>{contact.firstName}</td>
-                    <td>{contact.lastName}</td>
-                    <td>{contact.email}</td>
-                    <td>{contact.phoneNumber}</td>
-                    <td className="pointer" onClick={() => setCustomerIdToShow(contact.customerId)}>{contact.customerName}</td>
-                    <td>
-                      <div className="icon-spacing">
-                        <MdModeEdit className="pointer" size={32} onClick={() => setContactToEdit(contact)} />
-                        <MdDeleteForever
-                          className="pointer"
-                          size={32}
-                          onClick={() => {
-                            setContactToDelete(contact);
-                            setShowModal(true);
-                          }}
-                        />
-                      </div>
-                    </td>
+            <>
+              <table className="table table-hover table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Customer Name</th>
+                    <th>Actions</th>
                   </tr>
-                </tbody>
-              ))}
-            </table>
+                </thead>
+                {contacts.map(contact => (
+                  <tbody>
+                    <tr key={contact.contactId}>
+                      <td>{contact.firstName}</td>
+                      <td>{contact.lastName}</td>
+                      <td>{contact.email}</td>
+                      <td>{contact.phoneNumber}</td>
+                      <td className="pointer" onClick={() => setCustomerIdToShow(contact.customerId)}>{contact.customerName}</td>
+                      <td>
+                        <div className="icon-spacing">
+                          <MdModeEdit className="pointer" size={32} onClick={() => setContactToEdit(contact)} />
+                          <MdDeleteForever
+                            className="pointer"
+                            size={32}
+                            onClick={() => {
+                              setContactToDelete(contact);
+                              setShowModal(true);
+                            }}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
+              <br />
+              {nextCursor && (
+                <Button onClick={() => loadMoreContacts(nextCursor, setContacts, setNextCursor, setAlertMessage)} label="Load more contacts" styling="bcgov-normal-blue btn" />
+              )}
+            </>
           )}
         </>
       )}
       <br />
-      {nextCursor !== "" && (
-        <Button onClick={() => loadMoreContacts(nextCursor, setContacts, setNextCursor, setAlertMessage)} label="Load more contacts" styling="bcgov-normal-blue btn" />
-      )}
       <br />
       <br />
       <Feedback />
