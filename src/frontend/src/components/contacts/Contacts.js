@@ -9,11 +9,16 @@ import Customers from '../customers/Customers';
 import './Contacts.css';
 import SimpleModal from '../simple-modal/SimpleModal';
 
-const getContacts = (setContacts, setAlertMessage) => {
+const getContacts = (setContacts, setAlertMessage, setNextCursor) => {
   axios
     .get("/contacts")
-    .then((res) => {
-      setContacts(res.data.items);
+    .then(({ data: { items, metadata } }) => {
+      setContacts(items);
+      if (metadata) {
+        setNextCursor(metadata.nextCursor);
+      } else {
+        setNextCursor("");
+      }
     })
     .catch(() => {
       setAlertMessage('Error getting contacts');
@@ -35,8 +40,29 @@ const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContac
     })
 };
 
+const loadMoreContacts = (nextCursor, setContacts, setNextCursor, setAlertMessage) => {
+
+  if (nextCursor !== "") {
+    axios
+      .get(`/contacts?fromcursor=${nextCursor}`)
+      .then(({ data: { items, metadata } }) => {
+        setContacts(contacts => contacts.concat(items));
+        if (metadata) {
+          setNextCursor(metadata.nextCursor);
+        } else {
+          setNextCursor("");
+        }
+      })
+      .catch(() => {
+        setAlertMessage('Error getting contacts');
+      });
+  }
+
+}
+
 export default function Contacts() {
   const [contacts, setContacts] = useState([]);
+  const [nextCursor, setNextCursor] = useState("more");
   const [customerIdToShow, setCustomerIdToShow] = useState(null);
   const [contactToEdit, setContactToEdit] = useState(null);
   const [contactToDelete, setContactToDelete] = useState(null);
@@ -45,7 +71,7 @@ export default function Contacts() {
   const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
-    getContacts(setContacts, setAlertMessage);
+    getContacts(setContacts, setAlertMessage, setNextCursor);
   }, []);
 
   if (contactToEdit) return <EditContact contact={contactToEdit} />
@@ -133,6 +159,10 @@ export default function Contacts() {
             </table>
           )}
         </>
+      )}
+      <br />
+      {nextCursor !== "" && (
+        <Button onClick={() => loadMoreContacts(nextCursor, setContacts, setNextCursor, setAlertMessage)} label="Load more contacts" styling="normal-blue btn" />
       )}
       <br />
       <br />
