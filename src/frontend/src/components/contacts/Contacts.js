@@ -40,7 +40,7 @@ const deleteContact = (contactToDelete, setShowModal, setAlertMessage, setContac
     })
 };
 
-const loadMoreContact = (nextCursor, setContacts, setNextCursor, setAlertMessage) => {
+const loadMoreContacts = (nextCursor, setContacts, setNextCursor, setAlertMessage) => {
 
   if (nextCursor !== "") {
     axios
