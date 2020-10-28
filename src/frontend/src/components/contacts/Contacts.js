@@ -66,7 +66,13 @@ export default function Contacts() {
 
   return (
     <>
-      {alertMessage === "Error getting contacts" || alertMessage === "Error deleting contact" && (
+      {alertMessage === "Error getting contacts" && (
+        <>
+          <Alert icon={<MdCancel size={32} />} type="error" styling="error-background" element={alertMessage} />
+          <br />
+        </>
+      )}
+      {alertMessage === "Error deleting contact" && (
         <>
           <Alert icon={<MdCancel size={32} />} type="error" styling="error-background" element={alertMessage} />
           <br />
