@@ -96,25 +96,19 @@ paths:
       responses:
         "200":
           description: contact was deleted
-  "/customers/update":
-    put:
-      summary: Update
-      operationId: Update Customer
+  "/customers":
+    get:
+      summary: get all customers
+      operationId: GetCustomers
       tags:
         - customers
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Customer"
       responses:
         "200":
-          description: Customer was updated
+          description: get all customers
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Customer"
-  "/customers/add":
+                $ref: "#/components/schemas/Customers"
     post:
       summary: Add
       operationId: Add Customer
@@ -128,6 +122,23 @@ paths:
       responses:
         "201":
           description: Customer was added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+    put:
+      summary: Update
+      operationId: Update Customer
+      tags:
+        - customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        "200":
+          description: Customer was updated
           content:
             application/json:
               schema:
@@ -153,20 +164,6 @@ paths:
                 $ref: "#/components/schemas/Customer"
         "404":
           description: customer not found
-  "/customers":
-    get:
-      summary: get all customers
-      operationId: GetCustomers
-      tags:
-        - customers
-      responses:
-        "200":
-          description: get all customers
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Customers"
-  "/customers/{customerId}/delete":
     delete:
       summary: delete customer by id
       operationId: DeleteCustomer
@@ -181,25 +178,19 @@ paths:
       responses:
         "200":
           description: customer was deleted
-  "/countries/update":
-    put:
-      summary: Update
-      operationId: Update Country
+  "/countries":
+    get:
+      summary: get all countries
+      operationId: GetCountries
       tags:
         - countries
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Country"
       responses:
         "200":
-          description: Country was updated
+          description: get all Countries
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Country"
-  "/countries/add":
+                $ref: "#/components/schemas/Countries"
     post:
       summary: Add
       operationId: Add Country
@@ -213,6 +204,23 @@ paths:
       responses:
         "201":
           description: Country was added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Country"
+    put:
+      summary: Update
+      operationId: Update Country
+      tags:
+        - countries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Country"
+      responses:
+        "200":
+          description: Country was updated
           content:
             application/json:
               schema:
@@ -238,20 +246,6 @@ paths:
                 $ref: "#/components/schemas/Country"
         "404":
           description: contact not found
-  "/countries":
-    get:
-      summary: get all countries
-      operationId: GetCountries
-      tags:
-        - countries
-      responses:
-        "200":
-          description: get all Countries
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Countries"
-  "/countries/{countryId}/delete":
     delete:
       summary: delete country by id
       operationId: DeleteCountry
