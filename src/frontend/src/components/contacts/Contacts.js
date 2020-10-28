@@ -44,7 +44,7 @@ const loadMoreContact = (nextCursor, setContacts, setNextCursor, setAlertMessage
 
   if (nextCursor !== "") {
     axios
-      .get("/contacts?fromcursor=" + nextCursor)
+      .get(`/contacts?fromcursor=${nextCursor}`)
       .then((res) => {
         setContacts(contacts => contacts.concat(res.data.items));
         if(res.data.metadata) {
