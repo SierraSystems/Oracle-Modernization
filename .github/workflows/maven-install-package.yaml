@@ -32,5 +32,5 @@ jobs:
       # Run wmvn package - Oracle Modernization Quarkus Backend
       - name: Run wmvn package - Oracle Modernization Quarkus Backend
         run: |
-          mvn -N io.takari:maven:wrapper
+          mvn -N io.quarkus:quarkus-maven-plugin
           mvnw package --file src/backend/quarkus-management-api/pom.xml
