@@ -195,7 +195,7 @@
             <inputSpec>${project.basedir}/management-api.yaml</inputSpec>
             <generatorName>jaxrs-resteasy-eap</generatorName>
             <configOptions>
-              <dateLibrary>joda</dateLibrary>
+              <dateLibrary>java8</dateLibrary>
               <generateJbossDeploymentDescriptor>false</generateJbossDeploymentDescriptor>
               <implFolder>garbage</implFolder>
             </configOptions>

@@ -1,12 +1,11 @@
 package com.nttdata.quarkus.management.api.contact;
 
+import com.nttdata.quarkus.management.api.common.QueryHelpers;
 import com.nttdata.quarkus.management.api.model.database.Contacts;
 import com.nttdata.quarkus.management.api.openapi.model.Contact;
 import com.nttdata.quarkus.management.api.openapi.model.ContactList;
 import com.nttdata.quarkus.management.api.openapi.model.ListMetadata;
 import io.quarkus.panache.common.Sort;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -32,7 +31,7 @@ public class ContactsServiceImpl implements ContactsService {
 
         ContactList result = new ContactList();
 
-        BigInteger fromContactId = getFromContactId(fromCursor);
+        BigInteger fromContactId = QueryHelpers.getId(fromCursor, "user");
 
         int queryLimit = limit + 1;
 
@@ -49,22 +48,6 @@ public class ContactsServiceImpl implements ContactsService {
         result.setItems((List<Contact>)(List<?>)contacts);
 
         return result;
-
-    }
-
-    private BigInteger getFromContactId(String fromCursor) {
-
-        if(StringUtils.isBlank(fromCursor)) return BigInteger.ZERO;
-
-        String fromCursorDecoded = new String(Base64.getDecoder().decode(fromCursor));
-
-        if(!StringUtils.contains(fromCursorDecoded, ":")) return BigInteger.ZERO;
-
-        String candidate = fromCursorDecoded.split(":")[1];
-
-        if(!NumberUtils.isDigits(candidate)) return BigInteger.ZERO;
-
-        return new BigInteger(candidate);
 
     }
 
