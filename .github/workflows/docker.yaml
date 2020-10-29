@@ -2,7 +2,7 @@ name: Build and Upload Docker image to Docker Hub
 
 on:
   pull_request:
-    branches: [master]
+    branches: master
   push:
     branches: master
 
