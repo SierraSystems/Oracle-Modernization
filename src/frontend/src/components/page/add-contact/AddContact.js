@@ -41,7 +41,7 @@ const addNewContact = (addedContact, setShowContacts) => {
     });
 };
 
-export default function AddContact({ contact }) {
+export default function AddContact() {
   const [addedContact, setAddedContact] = useState({});
   const [showContacts, setShowContacts] = useState(false);
 
