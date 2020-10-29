@@ -6,9 +6,7 @@ import {
 } from "react-router-dom";
 import AuthenticationGuard from './components/hoc/AuthenticationGuard';
 import Home from './components/page/home/Home';
-import Orders from './components/page/orders/Orders';
 import { Header, Footer } from 'shared-components';
-import Countries from './components/page/countries/Countries';
 
 function App() {
   const header = {
@@ -24,13 +22,13 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/contacts">
-          <AuthenticationGuard />
+          <AuthenticationGuard page="Contacts" />
         </Route>
         <Route exact path="/orders">
-          <Orders />
+          <AuthenticationGuard page="Orders" />
         </Route>
         <Route exact path="/countries">
-          <Countries />
+          <AuthenticationGuard page="Countries" />
         </Route>
       </Switch>
       <Footer className="bcgov-footer" />

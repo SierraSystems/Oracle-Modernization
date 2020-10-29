@@ -1,57 +1,32 @@
 import React, { useState, useEffect } from "react";
 import Keycloak from "keycloak-js";
 import Contacts from "../page/contacts/Contacts";
-
-const url = window.REACT_APP_KEYCLOAK_URL
-  ? window.REACT_APP_KEYCLOAK_URL
-  : process.env.REACT_APP_KEYCLOAK_URL;
-const realm = window.REACT_APP_KEYCLOAK_REALM
-  ? window.REACT_APP_KEYCLOAK_REALM
-  : process.env.REACT_APP_KEYCLOAK_REALM;
-const clientId = window.REACT_APP_KEYCLOAK_CLIENT_ID
-  ? window.REACT_APP_KEYCLOAK_CLIENT_ID
-  : process.env.REACT_APP_KEYCLOAK_CLIENT_ID;
-
-const KEYCLOAK = {
-  realm,
-  url,
-  clientId,
-};
-
-// Initialize client
-const keycloak = Keycloak(KEYCLOAK);
+import Countries from "../page/countries/Countries";
+import Orders from "../page/orders/Orders";
+import Home from "../page/home/Home";
 
 /**
  * @constant authenticationGuard - a higher order component that checks for user authorization and returns the wrapped component if the user is authenticated
 */
 
-export default function AuthenticationGuard() {
-  const [authedKeycloak, setAuthedKeycloak] = useState(null);
+export default function AuthenticationGuard({ page }) {
 
-  async function keycloakInit() {
-    await keycloak
-      .init({
-        checkLoginIframe: false,
-      })
-      .then((authenticated) => {
-        if (authenticated) {
-          keycloak.loadUserInfo();
-          localStorage.setItem("jwt", keycloak.token);
-          setAuthedKeycloak(keycloak);
-        } else {
-          keycloak.login();
-        }
-      });
+  const getComponent = () => {
+    if(page === "Contacts")
+      return <Contacts />
+    if(page === "Countries")
+      return <Countries />
+    if(page === "Orders")
+      return <Orders />
+    
+    return <Home />
+    
   }
-
-  useEffect(() => {
-    keycloakInit();
-  }, []);
 
   return (
     <>
-      {authedKeycloak && <Contacts />}
-      {!authedKeycloak && null }
+      {localStorage.getItem("jwt") && getComponent()}
+      {!localStorage.getItem("jwt") && <Home /> }
     </>
   );
 }
