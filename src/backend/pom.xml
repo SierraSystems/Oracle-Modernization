@@ -24,7 +24,6 @@
 			<modules>
 				<module>libs/oracle-data-starter</module>
 				<module>quarkus-management-api</module>
-				<module>order-worker</module>
 			</modules>
 		</profile>
 	</profiles>
