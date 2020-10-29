@@ -17,7 +17,7 @@ public class OrderDto extends Order {
         this.setCustomerId(new BigDecimal(customerId));
         this.setCustomerName(customerName);
         this.setDate(formatter.format(date));
-        this.setEmployeeId(new BigDecimal(employeeId));
+        if(employeeId != null) this.setEmployeeId(new BigDecimal(employeeId));
         this.setEmployeeName(employeeName);
         this.setStatus(StatusEnum.valueOf(status.toUpperCase()));
         this.setTotalAmount(totalAmount);

@@ -28,9 +28,9 @@ public class OrderRepository implements PanacheRepositoryBase<OrderItems, OrderI
             ",  sum(it.unitPrice * it.quantity)" +
             ",  sum(it.quantity))" +
             " FROM OrderItems it" +
-            " JOIN it.orders ord" +
-            " JOIN ord.customers cus" +
-            " JOIN ord.employees emp";
+            " LEFT JOIN it.orders ord" +
+            " LEFT JOIN ord.customers cus" +
+            " LEFT JOIN ord.employees emp";
      private static final String GROUP_BY =
              " GROUP BY " +
              "   ord.orderId" +
