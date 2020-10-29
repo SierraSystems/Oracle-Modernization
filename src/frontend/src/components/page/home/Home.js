@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Header, Footer } from 'shared-components';
-import Contacts from '../contacts/Contacts';
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   const header = {
@@ -23,10 +23,11 @@ export default function Home() {
             <span>
               This application will allow users to interact and perform CRUD operations on entities residing within an Oracle Database.
             </span>
+            <br />
+            <span>
+              <Link to='/contacts'>See contacts</Link>
+            </span>
           </div>
-          <br />
-          <br />
-          <Contacts />
         </div>
       </div>
       <Footer className="bcgov-footer" />
