@@ -11,6 +11,10 @@
 
 # nginx state for serving content
 FROM nginx:alpine
+
+RUN rm -rf /etc/nginx/conf.d
+COPY conf /etc/nginx
+
 # Set working directory to nginx asset directory
 WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets
