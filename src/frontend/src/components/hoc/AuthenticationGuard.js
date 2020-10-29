@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Keycloak from "keycloak-js";
-import Home from "../home/Home";
+import ContactList from "../page/contacts/ContactList";
 
 const url = window.REACT_APP_KEYCLOAK_URL
   ? window.REACT_APP_KEYCLOAK_URL
@@ -50,7 +50,7 @@ export default function AuthenticationGuard() {
 
   return (
     <>
-      {authedKeycloak && <Home />}
+      {authedKeycloak && <ContactList />}
       {!authedKeycloak && null }
     </>
   );
