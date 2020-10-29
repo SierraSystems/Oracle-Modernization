@@ -11,7 +11,6 @@ public class OrderDto extends Order {
 
     public OrderDto(BigInteger orderId, Date date, BigInteger customerId, String customerName, BigInteger employeeId, String employeeName, String status, BigDecimal totalAmount, BigDecimal totalItems) {
 
-
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         this.setOrderId(new BigDecimal(orderId));
