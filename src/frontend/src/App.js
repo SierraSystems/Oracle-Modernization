@@ -3,8 +3,7 @@ import AuthenticationGuard from './components/hoc/AuthenticationGuard';
 import Home from './components/page/home/Home';
 import {
   Switch,
-  Route,
-  Redirect
+  Route
 } from "react-router-dom";
 
 function App() {
