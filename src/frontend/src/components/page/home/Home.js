@@ -1,17 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { Header, Footer } from 'shared-components';
 import { Link } from 'react-router-dom'
 
 export default function Home() {
-  const header = {
-    name: "Oracle Modernization",
-    history: useHistory(),
-  };
+  
 
   return (
     <main>
-      <Header header={header} />
       <div className="page">
         <div className="content col-md-12">
           <h1>Oracle Modernization</h1>
@@ -27,10 +21,13 @@ export default function Home() {
             <span>
               <Link to='/contacts'>See contacts</Link>
             </span>
+            <br />
+            <span>
+              <Link to='/orders'>See orders</Link>
+            </span>
           </div>
         </div>
       </div>
-      <Footer className="bcgov-footer" />
     </main>
   );
 }
