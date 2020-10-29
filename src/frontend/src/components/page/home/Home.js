@@ -1,65 +1,9 @@
-import React, { useState }  from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'shared-components';
 import Feedback from '../../composite/feedback/Feedback';
-import Keycloak from "keycloak-js";
-import { useEffect } from 'react';
 
-const url = window.REACT_APP_KEYCLOAK_URL
-  ? window.REACT_APP_KEYCLOAK_URL
-  : process.env.REACT_APP_KEYCLOAK_URL;
-const realm = window.REACT_APP_KEYCLOAK_REALM
-  ? window.REACT_APP_KEYCLOAK_REALM
-  : process.env.REACT_APP_KEYCLOAK_REALM;
-const clientId = window.REACT_APP_KEYCLOAK_CLIENT_ID
-  ? window.REACT_APP_KEYCLOAK_CLIENT_ID
-  : process.env.REACT_APP_KEYCLOAK_CLIENT_ID;
-
-const KEYCLOAK = {
-  realm,
-  url,
-  clientId,
-};
-
-// Initialize client
-const keycloak = Keycloak(KEYCLOAK);
-
-
-
-export default function Home() {
-
-  const [authedKeycloak, setAuthedKeycloak] = useState(null);
-
-  async function login() {
-
-    sessionStorage.setItem("clicked", true);
-
-    await keycloak
-      .init({
-        checkLoginIframe: false,
-      })
-      .then((authenticated) => {
-        
-        console.log(keycloak);
-        console.log(authenticated);
-        
-        if (authenticated) {
-          keycloak.loadUserInfo();
-          setAuthedKeycloak(true);
-          localStorage.setItem("jwt", keycloak.token);
-        } else {
-          keycloak.login();
-        }
-      });
-
-  }
-
-  useEffect(() => {
-    if(sessionStorage.getItem("clicked")) {
-      login();
-    }
-  }, []);
-
+export default function Home({ onLogin, isAuthed }) {
   return (
     <div className="page">
       <div className="content col-md-12">
@@ -74,10 +18,10 @@ export default function Home() {
           </span>
           <br />
           <br />
-          {!authedKeycloak && (
-             <Button label="Login" styling="bcgov-normal-blue btn" onClick={() => login()} />
+          {!isAuthed && (
+             <Button label="Login" styling="bcgov-normal-blue btn" onClick={onLogin} />
           )}
-          {authedKeycloak && (
+          {isAuthed && (
           <>
             <br />
             <br />
