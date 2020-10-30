@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'shared-components';
 import Feedback from '../../composite/feedback/Feedback';
 
-export default function Home({ onLogin, isAuthed }) {
+export default function Home({ isAuthed }) {
   return (
     <div className="page">
       <div className="content col-md-12">
@@ -18,13 +17,8 @@ export default function Home({ onLogin, isAuthed }) {
           </span>
           <br />
           <br />
-          {!isAuthed && (
-             <Button label="Login" styling="bcgov-normal-blue btn" onClick={onLogin} />
-          )}
           {isAuthed && (
           <>
-            <br />
-            <br />
             <span>
               <Link to='/contacts'>View Contacts</Link>
             </span>
