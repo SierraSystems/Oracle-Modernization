@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MdCancel } from 'react-icons/md';
+import { useHistory } from "react-router-dom";
 import { Button, Loader, Alert } from 'shared-components';
 
 const loadOrders = (setOrders, setAlertMessage, setNextCursor) => {
@@ -31,14 +32,17 @@ const loadMoreOrders = (fromCursor, setOrders, setNextCursor, setAlertMessage) =
     });
 }
 
-export default function Orders() {
+export default function Orders({ isAuthed }) {
   const [orders, setOrders] = useState([]);
   const [nextCursor, setNextCursor] = useState("more");
   const [alertMessage, setAlertMessage] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     loadOrders(setOrders, setAlertMessage, setNextCursor);
   }, []);
+
+  if (!isAuthed) history.push("/");
 
   return (
     <div className="page">
