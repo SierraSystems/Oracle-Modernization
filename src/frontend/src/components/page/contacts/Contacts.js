@@ -8,7 +8,6 @@ import AddContact from "../add-contact/AddContact";
 import Customers from '../customers/Customers';
 import './Contacts.css';
 import SimpleModal from '../../composite/simple-modal/SimpleModal';
-import { validateAuthStatus } from '../../../modules/validateAuthStatus';
 
 const getContacts = (setContacts, setAlertMessage, setNextCursor) => {
   axios
@@ -71,7 +70,7 @@ export default function Contacts({ isAuthed }) {
     getContacts(setContacts, setAlertMessage, setNextCursor);
   }, []);
 
-  if (!validateAuthStatus(isAuthed)) history.push("/");
+  if (!isAuthed) history.push("/");
   if (contactToEdit) return <EditContact contact={contactToEdit} />
   if (addContact) return <AddContact />
   if (customerIdToShow) return <Customers customerId={customerIdToShow} />

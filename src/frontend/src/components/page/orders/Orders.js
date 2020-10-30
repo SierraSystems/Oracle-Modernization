@@ -3,7 +3,6 @@ import axios from 'axios';
 import { MdCancel } from 'react-icons/md';
 import { useHistory } from "react-router-dom";
 import { Button, Loader, Alert } from 'shared-components';
-import { validateAuthStatus } from '../../../modules/validateAuthStatus';
 
 const loadOrders = (setOrders, setAlertMessage, setNextCursor) => {
   axios
@@ -43,7 +42,7 @@ export default function Orders({ isAuthed }) {
     loadOrders(setOrders, setAlertMessage, setNextCursor);
   }, []);
 
-  if (!validateAuthStatus(isAuthed)) history.push("/");
+  if (!isAuthed) history.push("/");
 
   return (
     <div className="page">

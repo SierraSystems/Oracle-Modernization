@@ -3,7 +3,6 @@ import axios from 'axios';
 import { MdCancel } from 'react-icons/md';
 import { useHistory } from "react-router-dom";
 import { Loader, Alert } from 'shared-components';
-import { validateAuthStatus } from '../../../modules/validateAuthStatus';
 
 const getCountries = (setCountries, setAlertMessage) => {
   axios
@@ -25,7 +24,7 @@ export default function Countries({ isAuthed }) {
     getCountries(setCountries, setAlertMessage);
   }, []);
 
-  if (!validateAuthStatus(isAuthed)) history.push("/");
+  if (!isAuthed) history.push("/");
 
   return (
     <div className="page">
