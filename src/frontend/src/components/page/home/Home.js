@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'shared-components';
 import Feedback from '../../composite/feedback/Feedback';
 
-export default function Home() {
+export default function Home({ onLogin, isAuthed }) {
   return (
     <div className="page">
       <div className="content col-md-12">
@@ -17,21 +18,29 @@ export default function Home() {
           </span>
           <br />
           <br />
-          <span>
-            <Link to='/contacts'>View Contacts</Link>
-          </span>
-          <br />
-          <br />
-          <span>
-            <Link to='/orders'>View Orders</Link>
-          </span>
-          <br />
-          <br />
-          <span>
-            <Link to='/countries'>View Countries</Link>
-          </span>
-          <br />
-          <br />
+          {!isAuthed && (
+             <Button label="Login" styling="bcgov-normal-blue btn" onClick={onLogin} />
+          )}
+          {isAuthed && (
+          <>
+            <br />
+            <br />
+            <span>
+              <Link to='/contacts'>View Contacts</Link>
+            </span>
+            <br />
+            <br />
+            <span>
+              <Link to='/orders'>View Orders</Link>
+            </span>
+            <br />
+            <br />
+            <span>
+              <Link to='/countries'>View Countries</Link>
+            </span>
+            <br />
+            <br />
+          </>)}
           <br />
           <Feedback />
         </div>
