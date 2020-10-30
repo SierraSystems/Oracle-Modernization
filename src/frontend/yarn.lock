@@ -10291,9 +10291,9 @@ shallow-clone@^3.0.0:
   dependencies:
     kind-of "^6.0.2"
 
-"shared-components@https://github.com/bcgov/react-shared-components/releases/download/1.0.0/shared-components-1.0.0.tgz":
-  version "1.0.0"
-  resolved "https://github.com/bcgov/react-shared-components/releases/download/1.0.0/shared-components-1.0.0.tgz#27231e391a46a76f6cb130c6b251bee0709a0f2d"
+"shared-components@https://github.com/bcgov/react-shared-components/releases/download/1.1.0/shared-components-1.1.0.tgz":
+  version "1.1.0"
+  resolved "https://github.com/bcgov/react-shared-components/releases/download/1.1.0/shared-components-1.1.0.tgz#0c1b886d88fd6f17483ad6a5b9d56de3515e7a45"
   dependencies:
     "@bcgov/bootstrap-theme" "github:bcgov/bootstrap-theme"
     bootstrap "^4.5.3"

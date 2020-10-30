@@ -53,3 +53,10 @@ main {
 .limit-width {
   width: 40%;
 }
+
+.logout-btn {
+  margin: 10px;
+  background-color: #dc3545 !important;
+  border-color: #979797 !important;
+  color: white !important;
+}
