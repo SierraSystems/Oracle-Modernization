@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MdModeEdit, MdDeleteForever, MdCheckBox, MdCancel } from 'react-icons/md';
 import { Button, Loader, Alert } from 'shared-components';
+import { useHistory } from "react-router-dom";
 import EditContact from '../edit-contact/EditContact';
 import AddContact from "../add-contact/AddContact";
 import Customers from '../customers/Customers';
 import './Contacts.css';
 import SimpleModal from '../../composite/simple-modal/SimpleModal';
+import { validateAuthStatus } from '../../../modules/validateAuthStatus';
 
 const getContacts = (setContacts, setAlertMessage, setNextCursor) => {
   axios
@@ -54,7 +56,7 @@ const loadMoreContacts = (nextCursor, setContacts, setNextCursor, setAlertMessag
     });
 }
 
-export default function Contacts() {
+export default function Contacts({ isAuthed }) {
   const [contacts, setContacts] = useState([]);
   const [nextCursor, setNextCursor] = useState("more");
   const [customerIdToShow, setCustomerIdToShow] = useState(null);
@@ -63,11 +65,13 @@ export default function Contacts() {
   const [addContact, setAddContact] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     getContacts(setContacts, setAlertMessage, setNextCursor);
   }, []);
 
+  if (!validateAuthStatus(isAuthed)) history.push("/");
   if (contactToEdit) return <EditContact contact={contactToEdit} />
   if (addContact) return <AddContact />
   if (customerIdToShow) return <Customers customerId={customerIdToShow} />

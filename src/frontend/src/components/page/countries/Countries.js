@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MdCancel } from 'react-icons/md';
+import { useHistory } from "react-router-dom";
 import { Loader, Alert } from 'shared-components';
+import { validateAuthStatus } from '../../../modules/validateAuthStatus';
 
 const getCountries = (setCountries, setAlertMessage) => {
   axios
@@ -14,13 +16,16 @@ const getCountries = (setCountries, setAlertMessage) => {
     });
 };
 
-export default function Countries() {
+export default function Countries({ isAuthed }) {
   const [countries, setCountries] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     getCountries(setCountries, setAlertMessage);
   }, []);
+
+  if (!validateAuthStatus(isAuthed)) history.push("/");
 
   return (
     <div className="page">

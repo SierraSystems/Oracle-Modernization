@@ -5,9 +5,11 @@ import {
   useHistory
 } from "react-router-dom";
 import Keycloak from "keycloak-js";
-import AuthenticationGuard from './components/hoc/AuthenticationGuard';
 import Home from './components/page/home/Home';
 import { Header, Footer } from 'shared-components';
+import Countries from './components/page/countries/Countries';
+import Orders from './components/page/orders/Orders';
+import Contacts from './components/page/contacts/Contacts';
 
 const url = window.REACT_APP_KEYCLOAK_URL
   ? window.REACT_APP_KEYCLOAK_URL
@@ -66,13 +68,13 @@ function App() {
           <Home onLogin={() => login()} isAuthed={isAuthed} />
         </Route>
         <Route exact path="/contacts">
-          <AuthenticationGuard isAuthed={isAuthed} page="Contacts" />
+          <Contacts isAuthed={isAuthed} />
         </Route>
         <Route exact path="/orders">
-          <AuthenticationGuard isAuthed={isAuthed} page="Orders" />
+          <Orders isAuthed={isAuthed} />
         </Route>
         <Route exact path="/countries">
-          <AuthenticationGuard isAuthed={isAuthed} page="Countries" />
+          <Countries isAuthed={isAuthed} />
         </Route>
       </Switch>
       <Footer className="bcgov-footer" />
