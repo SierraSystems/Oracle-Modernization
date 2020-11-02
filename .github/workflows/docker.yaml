@@ -1,0 +1,22 @@
+name: Build and Upload Docker image to Docker Hub
+
+on:
+  pull_request:
+    branches: master
+  push:
+    branches: master
+
+jobs:
+  path-context:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - uses: mr-smithers-excellent/docker-build-push@v4
+        name: Build and Push Docker image
+        with:
+          image: oracle-modernization/quarkus-management-api
+          dockerfile: ./src/backend/quarkus-management-api/src/main/docker/Dockerfile.jvm
+          directory: ./src/backend/quarkus-management-api/src/main/docker
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
